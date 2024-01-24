@@ -112,9 +112,12 @@ Song -----< SongGenre >----- Genre
 ### Endpoints
 
 Parameters:
-username (string): Spotify username,
-password (string): Spotify password,
-userId (string): User's unique identifier,
+username (string): Spotify username.
+
+password (string): Spotify password.
+
+userId (string): User's unique identifier.
+
 timePeriod (string): Time period for analytics (e.g., 'week', 'month', 'year').
 
 User Authentication:
