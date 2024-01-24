@@ -112,6 +112,7 @@ Song -----< SongGenre >----- Genre
 ### Endpoints
 
 Parameters:
+
 username (string): Spotify username.
 
 password (string): Spotify password.
