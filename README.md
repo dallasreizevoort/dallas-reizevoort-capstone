@@ -93,7 +93,7 @@ Description: Allows users to customize app settings, including preferences for a
 N/A
 
 ### Data
-
+```
 User -----< UserSong >----- Song
 |
 v
@@ -107,6 +107,7 @@ User -----< Playlist >----- PlaylistSong -----< Song
 |
 v
 Song -----< SongGenre >----- Genre
+```
 
 ### Endpoints
 
