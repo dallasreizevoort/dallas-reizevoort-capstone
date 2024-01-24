@@ -1,12 +1,6 @@
-import React from "react";
-import Login from "./Components/Login";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
 
-function App() {
-  return (
-    <div className="App">
-      <Login />
-    </div>
-  );
-}
-
-export default App;
+const root = document.getElementById('root');
+createRoot(root).render(<App />);
