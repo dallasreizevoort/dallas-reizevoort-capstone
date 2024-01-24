@@ -111,12 +111,11 @@ Song -----< SongGenre >----- Genre
 
 ### Endpoints
 
-I am still not sure I will use all of these or get all the features I want in, but these are some examples:
 Parameters:
-username (string): Spotify username
-password (string): Spotify password
-userId (string): User's unique identifier
-timePeriod (string): Time period for analytics (e.g., 'week', 'month', 'year')
+username (string): Spotify username,
+password (string): Spotify password,
+userId (string): User's unique identifier,
+timePeriod (string): Time period for analytics (e.g., 'week', 'month', 'year').
 
 User Authentication:
 
