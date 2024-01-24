@@ -112,10 +112,13 @@ Song -----< SongGenre >----- Genre
 ### Endpoints
 
 I am still not sure I will use all of these or get all the features I want in, but these are some examples:
-
-User Authentication:
+Parameters:
 username (string): Spotify username
 password (string): Spotify password
+userId (string): User's unique identifier
+timePeriod (string): Time period for analytics (e.g., 'week', 'month', 'year')
+
+User Authentication:
 
 Endpoint: /api/auth/login
 Method: POST
@@ -131,8 +134,6 @@ Parameters: username, password
 ```
 
 User Data Retrieval:
-userId (string): User's unique identifier
-timePeriod (string): Time period for analytics (e.g., 'week', 'month', 'year')
 
 Endpoint: /api/user/:userId/dashboard
 Method: GET
@@ -145,7 +146,6 @@ Parameters: userId, timePeriod
   "playlistRecommendations": [...]
 }
 ```
-
 Endpoint: /api/user/:userId/songs
 Method: GET
 Parameters: userId
@@ -162,7 +162,6 @@ Parameters: userId
   // ... other songs
 ]
 ```
-
 Endpoint: /api/user/:userId/albums
 Method: GET
 Parameters: userId 
@@ -178,7 +177,6 @@ Parameters: userId
   // ... other albums
 ]
 ```
-
 Endpoint: /api/user/:userId/genres
 Method: GET
 Parameters: userId 
@@ -192,7 +190,6 @@ Parameters: userId
   // ... other genres
 ]
 ```
-
 Endpoint: /api/user/:userId/playlists
 Method: GET
 Parameters: userId 
@@ -207,7 +204,6 @@ Parameters: userId
   // ... other playlists
 ]
 ```
-
 Endpoint: /api/user/:userId/settings
 Method: GET
 Parameters: userId
