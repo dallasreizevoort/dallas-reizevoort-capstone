@@ -120,7 +120,15 @@ password (string): Spotify password
 Endpoint: /api/auth/login
 Method: POST
 Parameters: username, password
-
+```
+{
+  "token": "your_auth_token",
+  "user": {
+    "id": "user_id",
+    "username": "spotify_username"
+  }
+}
+```
 
 User Data Retrieval:
 userId (string): User's unique identifier
@@ -129,26 +137,93 @@ timePeriod (string): Time period for analytics (e.g., 'week', 'month', 'year')
 Endpoint: /api/user/:userId/dashboard
 Method: GET
 Parameters: userId, timePeriod 
+```
+{
+  "mostPlayedSongs": [...],
+  "mostPlayedAlbums": [...],
+  "mostPlayedGenres": [...],
+  "playlistRecommendations": [...]
+}
+```
 
 Endpoint: /api/user/:userId/songs
 Method: GET
-Parameters: userId 
+Parameters: userId
+```
+[
+  {
+    "songId": "song_id",
+    "title": "song_title",
+    "artist": "song_artist",
+    "album": "song_album",
+    "releaseDate": "song_release_date",
+    "playCount": 123
+  },
+  // ... other songs
+]
+```
 
 Endpoint: /api/user/:userId/albums
 Method: GET
 Parameters: userId 
+```
+[
+  {
+    "albumId": "album_id",
+    "title": "album_title",
+    "artist": "album_artist",
+    "releaseDate": "album_release_date",
+    "playCount": 456
+  },
+  // ... other albums
+]
+```
 
 Endpoint: /api/user/:userId/genres
 Method: GET
 Parameters: userId 
+```
+[
+  {
+    "genreId": "genre_id",
+    "name": "genre_name",
+    "playCount": 789
+  },
+  // ... other genres
+]
+```
 
 Endpoint: /api/user/:userId/playlists
 Method: GET
 Parameters: userId 
+```
+[
+  {
+    "playlistId": "playlist_id",
+    "title": "playlist_title",
+    "description": "playlist_description",
+    "songs": [...]
+  },
+  // ... other playlists
+]
+```
 
 Endpoint: /api/user/:userId/settings
 Method: GET
 Parameters: userId
+```
+{
+  "notificationPreferences": {
+    "email": true,
+    "push": false
+  },
+  "displayPreferences": {
+    "darkMode": true,
+    "compactView": false
+  }
+}
+
+```
 
 
 ### Auth
