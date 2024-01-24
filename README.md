@@ -114,46 +114,42 @@ Song -----< SongGenre >----- Genre
 I am still not sure I will use all of these or get all the features I want in, but these are some examples:
 
 User Authentication:
+username (string): Spotify username
+password (string): Spotify password
+
 Endpoint: /api/auth/login
 Method: POST
-Parameters: username (string): Spotify username, password (string): Spotify password
+Parameters: username, password
 
-//
 
 User Data Retrieval:
+userId (string): User's unique identifier
+timePeriod (string): Time period for analytics (e.g., 'week', 'month', 'year')
+
 Endpoint: /api/user/:userId/dashboard
 Method: GET
-Parameters: userId (string): User's unique identifier, timePeriod (string): Time period for analytics (e.g., 'week', 'month', 'year')
-
-//
+Parameters: userId, timePeriod 
 
 Endpoint: /api/user/:userId/songs
 Method: GET
-Parameters: userId (string): User's unique identifier
-
-//
+Parameters: userId 
 
 Endpoint: /api/user/:userId/albums
 Method: GET
-Parameters: userId (string): User's unique identifier
-
-//
+Parameters: userId 
 
 Endpoint: /api/user/:userId/genres
 Method: GET
-Parameters: userId (string): User's unique identifier
-
-//
+Parameters: userId 
 
 Endpoint: /api/user/:userId/playlists
 Method: GET
-Parameters: userId (string): User's unique identifier
-
-//
+Parameters: userId 
 
 Endpoint: /api/user/:userId/settings
 Method: GET
-Parameters: userId (string): User's unique identifier
+Parameters: userId
+
 
 ### Auth
 
