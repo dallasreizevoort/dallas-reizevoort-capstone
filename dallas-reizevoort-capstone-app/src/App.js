@@ -1,15 +1,26 @@
 import React from "react";
+import Header from "./components/Header/Header";
 import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import "./styles/partials/global.scss";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const code = new URLSearchParams(window.location.search).get("code");
 
 function App() {
-  return code ? (
-    <Dashboard code={code} />
-  ) : (
-    <Login />
+  return (
+    <Router>
+      {code ? (
+        <>
+          <Dashboard code={code} />
+          <Link to="/top-tracks">Top Tracks</Link>
+          <Link to="/top-artists">Top Artists</Link>
+        </>
+      ) : (
+        <Login />
+      )}
+    </Router>
   );
 }
 

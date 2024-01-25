@@ -1,11 +1,18 @@
+@use '../../styles/partials/variables.scss' as *;
 
 .dashboard {
-    display: flex;
-    flex-direction: column;
+
+    margin: 1.5rem;
     
 
+    &__hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+    }
+
     &__form {
-        margin-top: 200px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -14,16 +21,18 @@
 
         input {
             width: 250px;
-            height: 50px;
+            height: 38px;
+            background-color: $background-color-primary;
+            
         }
        
     }
 
     &__button {
-        background-color: #1DB954;
+        background-color: $purple-primary;
         color: #FFFFFF;
-        width: 150px;
-        height: 50px;
+        width: 175px;
+        height: 38px;
         border-radius: 4px;
         display: flex;
         justify-content: center;

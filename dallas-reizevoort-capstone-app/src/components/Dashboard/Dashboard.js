@@ -5,6 +5,8 @@ import "./Dashboard.scss";
 import spotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "../TrackSearchResult";
 import Player from "../Player";
+import Header from "../Header/Header";
+import { Routes, Route } from 'react-router-dom';
 
 function Dashboard({ code }) {
   const accessToken = useAuth(code);
@@ -13,14 +15,12 @@ function Dashboard({ code }) {
   const [playingTrack, setPlayingTrack] = useState(); 
   const [topArtists, setTopArtists] = useState([]);
   const [topTracks, setTopTracks] = useState([]);
-
+  const [topGenres, setTopGenres] = useState([]);
 
   function chooseTrack(track) {
     setPlayingTrack(track);
     setSearch("");
   }
-
-
 
   console.log(searchResults);
 
@@ -79,50 +79,91 @@ function Dashboard({ code }) {
     spotifyApi.current.setAccessToken(accessToken);
     spotifyApi.current.getMyTopArtists().then((res) => {
       setTopArtists(res.body.items);
+
+      const allGenres = res.body.items.flatMap((artist) => artist.genres);
+      const genreCount = allGenres.reduce((acc, genre) => {
+        acc[genre] = (acc[genre] || 0) + 1;
+        return acc;
+      }, {});
+      const topGenres = Object.entries(genreCount)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5)
+        .map(([genre]) => genre);
+      setTopGenres(topGenres);
     });
 
     spotifyApi.current.getMyTopTracks().then((res) => {
       setTopTracks(res.body.items);
+      console.log(res.body.items);
     });
   }, [accessToken]);
 
-
   return (
     <div className="dashboard">
-      <form className="dashboard__form" onSubmit={handleSearch}>
-        <input
-          className="dashboard__input"
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search..."
-        />
-        <button className="dashboard__button" type="submit">
-          Search
-        </button>
-        <div className="dashboard__songs">
-        </div>
-        {searchResults.map(track => (
-          <TrackSearchResult track={track} key={track.uri} chooseTrack={chooseTrack} />
-        ))}
-      </form>
+      <Header />
+      <section className="dashboard__hero">
+        <form className="dashboard__form" onSubmit={handleSearch}>
+          {/* <input
+            className="dashboard__input"
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search..."
+          /> */}
+          <button className="dashboard__button" type="submit">
+            Search
+          </button>
+        </form>
+      </section>
+      <div className="dashboard__songs"></div>
+      {searchResults.map((track) => (
+        <TrackSearchResult track={track} key={track.uri} chooseTrack={chooseTrack} />
+      ))}
+
       <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
       <div className="dashboard__top">
-        <div className="dashboard__top--artists">
-          <h2>Top Artists</h2>
-          {topArtists.map((artist, index) => (
-            <div key={index}>
-              <img src={artist.images[0]?.url} alt={artist.name} />
-              {artist.name}</div>
-          ))};
-          </div>
-          <div className="dashboard__top--tracks">
-            <h2>Top Tracks</h2>
-            {topTracks.map((track, index) => (
-              <div key={index}>{track.name}</div>
-            ))};
-            </div>
-    </div>
+        <Routes>
+          <Route
+            path="/top-artists"
+            element={
+              <div className="dashboard__top--artists">
+                <h2>Top Artists</h2>
+                {topArtists.map((artist, index) => (
+                  <div key={index}>
+                    <img src={artist.images[0]?.url} alt={artist.name} />
+                    {artist.name}
+                  </div>
+                ))}
+              </div>
+            }
+          />
+          <Route
+            path="/top-tracks"
+            element={
+              <div className="dashboard__top--tracks">
+                <h2>Top Tracks</h2>
+                {topTracks.map((track, index) => (
+                  <div key={index}>
+                    <img src={track.album?.images[0]?.url} alt={track.name} />
+                    {track.name}
+                  </div>
+                ))}
+              </div>
+            }
+          />
+          <Route
+            path="/top-genres"
+            element={
+              <div className="dashboard__top--genres">
+                <h2>Top Genres</h2>
+                {topGenres.map((genre, index) => (
+                  <div key={index}>{genre}</div>
+                ))}
+              </div>
+            }
+          />
+        </Routes>
+      </div>
     </div>
   );
 }

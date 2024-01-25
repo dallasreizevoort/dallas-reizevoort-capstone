@@ -1,4 +1,6 @@
+@use './variables.scss' as *;
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 
 *
 {
@@ -7,5 +9,7 @@
     padding: 0;
     text-decoration: none;
     font-family: 'Open Sans', sans-serif;
+    background-color: $background-color-primary;
+    color: $font-color-primary;
 }
 
