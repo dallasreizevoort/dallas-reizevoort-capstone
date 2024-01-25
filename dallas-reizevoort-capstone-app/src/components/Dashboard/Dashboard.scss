@@ -1,0 +1,41 @@
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    
+
+    &__form {
+        margin-top: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+       
+         
+
+        input {
+            width: 250px;
+            height: 50px;
+        }
+       
+    }
+
+    &__button {
+        background-color: #1DB954;
+        color: #FFFFFF;
+        width: 150px;
+        height: 50px;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+    }
+
+    &__top {
+
+        img {
+            width: 64px;
+            height: 64px;
+        }
+    }
+}

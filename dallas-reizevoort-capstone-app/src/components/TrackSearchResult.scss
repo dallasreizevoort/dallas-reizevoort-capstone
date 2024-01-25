@@ -1,0 +1,22 @@
+
+
+.track-search-result {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+    
+
+
+    &__info  {
+
+    align-items: center;
+
+    img {
+        height: 64px;
+        width: 64px;
+    }
+    }
+
+    
+}
