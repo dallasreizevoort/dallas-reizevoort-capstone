@@ -9,6 +9,7 @@ const scopes = [
   "user-library-modify",
   "user-read-playback-state",
   "user-modify-playback-state",
+  "user-read-recently-played",
 ];
 const redirectUri = "http://localhost:3000";
 const clientId = "6ba0cc8b29e145ea99f2401c09a35e6e";

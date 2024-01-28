@@ -19,8 +19,12 @@ function Header() {
         <Link to="/top-artists">
         <li className="header__nav--list">Top Artists</li>
         </Link>
+        <Link to="/top-genres">
         <li className="header__nav--list">Top Genres</li>
+        </Link>
+        <Link to="/recently-played">
         <li className="header__nav--list">Recently Played</li>
+        </Link>
       </ul>
       </div>
       <div className="header__settings">

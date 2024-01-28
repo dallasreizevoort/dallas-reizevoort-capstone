@@ -14,8 +14,6 @@ function App() {
       {code ? (
         <>
           <Dashboard code={code} />
-          <Link to="/top-tracks">Top Tracks</Link>
-          <Link to="/top-artists">Top Artists</Link>
         </>
       ) : (
         <Login />

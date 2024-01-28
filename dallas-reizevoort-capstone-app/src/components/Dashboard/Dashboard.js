@@ -6,16 +6,17 @@ import spotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "../TrackSearchResult";
 import Player from "../Player";
 import Header from "../Header/Header";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 
 function Dashboard({ code }) {
   const accessToken = useAuth(code);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [playingTrack, setPlayingTrack] = useState(); 
+  const [playingTrack, setPlayingTrack] = useState();
   const [topArtists, setTopArtists] = useState([]);
   const [topTracks, setTopTracks] = useState([]);
   const [topGenres, setTopGenres] = useState([]);
+  const [recentlyPlayed, setRecentlyPlayed] = useState([]);
 
   function chooseTrack(track) {
     setPlayingTrack(track);
@@ -98,40 +99,57 @@ function Dashboard({ code }) {
     });
   }, [accessToken]);
 
+  useEffect(() => {
+    if (!accessToken) return;
+    spotifyApi.current.setAccessToken(accessToken);
+    spotifyApi.current.getMyRecentlyPlayedTracks({ limit: 10 })
+      .then((response) => {
+        setRecentlyPlayed(response.body.items);
+      });
+  }, [accessToken]);
+
   return (
     <div className="dashboard">
       <Header />
       <section className="dashboard__hero">
-        <form className="dashboard__form" onSubmit={handleSearch}>
-          {/* <input
+        {/* <form className="dashboard__form" onSubmit={handleSearch}> */}
+        {/* <input
             className="dashboard__input"
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search..."
           /> */}
-          <button className="dashboard__button" type="submit">
+        {/* <button className="dashboard__button" type="submit">
             Search
-          </button>
-        </form>
+          </button> */}
+        {/* </form> */}
       </section>
       <div className="dashboard__songs"></div>
       {searchResults.map((track) => (
-        <TrackSearchResult track={track} key={track.uri} chooseTrack={chooseTrack} />
+        <TrackSearchResult
+          track={track}
+          key={track.uri}
+          chooseTrack={chooseTrack}
+        />
       ))}
 
-      <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
+      {/* <Player accessToken={accessToken} trackUri={playingTrack?.uri} /> */}
       <div className="dashboard__top">
         <Routes>
           <Route
             path="/top-artists"
             element={
-              <div className="dashboard__top--artists">
-                <h2>Top Artists</h2>
+              <div className="dashboard__artists">
                 {topArtists.map((artist, index) => (
-                  <div key={index}>
-                    <img src={artist.images[0]?.url} alt={artist.name} />
-                    {artist.name}
+                  <div key={index} className="artist">
+                    <span className="artist__rank">{index + 1}.</span>
+                    <img
+                      src={artist.images[0]?.url}
+                      alt={artist.name}
+                      className="artist__image"
+                    />
+                    <span className="artist__title">{artist.name}</span>
                   </div>
                 ))}
               </div>
@@ -140,12 +158,16 @@ function Dashboard({ code }) {
           <Route
             path="/top-tracks"
             element={
-              <div className="dashboard__top--tracks">
-                <h2>Top Tracks</h2>
+              <div className="dashboard__tracks">
                 {topTracks.map((track, index) => (
-                  <div key={index}>
-                    <img src={track.album?.images[0]?.url} alt={track.name} />
-                    {track.name}
+                  <div key={index} className="track">
+                    <span className="track__rank">{index + 1}.</span>
+                    <img
+                      src={track.album?.images[0]?.url}
+                      alt={track.name}
+                      className="track__image"
+                    />
+                    <span className="track__title">{track.name}</span>
                   </div>
                 ))}
               </div>
@@ -154,10 +176,30 @@ function Dashboard({ code }) {
           <Route
             path="/top-genres"
             element={
-              <div className="dashboard__top--genres">
-                <h2>Top Genres</h2>
+              <div className="dashboard__genres">
                 {topGenres.map((genre, index) => (
-                  <div key={index}>{genre}</div>
+                  <div key={index} className="genre">
+                    <span className="genre__rank">{index + 1}.</span>
+                    <span className="genre__type">{genre}</span>
+                  </div>
+                ))}
+              </div>
+            }
+          />
+          <Route
+            path="/recently-played"
+            element={
+              <div className="dashboard__recents">
+                {recentlyPlayed.map((track, index) => (
+                  <div key={index} className="recent">
+                    <span className="track__rank">{index + 1}.</span>
+                    <img
+                      src={track.track.album.images[0].url}
+                      alt={track.track.name}
+                      className="track__image"
+                    />
+                    <span className="track__title">{track.track.name}</span>
+                  </div>
                 ))}
               </div>
             }
