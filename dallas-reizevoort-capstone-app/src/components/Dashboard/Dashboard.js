@@ -7,6 +7,7 @@ import TrackSearchResult from "../TrackSearchResult";
 import Player from "../Player";
 import Header from "../Header/Header";
 import { Routes, Route } from "react-router-dom";
+import SpotifyIcon from "../../assets/images/Spotify_Icon_RGB_White.png";
 
 function Dashboard({ code }) {
   const accessToken = useAuth(code);
@@ -126,16 +127,20 @@ function Dashboard({ code }) {
     spotifyApi.current.setAccessToken(accessToken);
 
     // Define a helper function to calculate top genres
+    // const calculateTopGenres = (artists) => {
+    //   const allGenres = artists.flatMap((artist) => artist.genres);
+    //   const genreCount = allGenres.reduce((acc, genre) => {
+    //     acc[genre] = (acc[genre] || 0) + 1;
+    //     return acc;
+    //   }, {});
+    //   return Object.entries(genreCount)
+    //     .sort((a, b) => b[1] - a[1])
+    //     .map(([genre]) => genre);
+    // };
+
     const calculateTopGenres = (artists) => {
       const allGenres = artists.flatMap((artist) => artist.genres);
-      const genreCount = allGenres.reduce((acc, genre) => {
-        acc[genre] = (acc[genre] || 0) + 1;
-        return acc;
-      }, {});
-      return Object.entries(genreCount)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 10) // Display top 10 genres
-        .map(([genre]) => genre);
+      return allGenres;
     };
 
     // Fetch data for each time range
@@ -230,6 +235,11 @@ function Dashboard({ code }) {
                       />
                       </div>
                       <span className="artist__title">{artist.name}</span>
+                      <div className="artist__link">
+                      <a href={artist.external_urls.spotify} target="_blank" rel="noopener noreferrer" className="artist__btn">
+  <img src={SpotifyIcon} alt="Spotify Icon" />
+</a>
+                    </div>
                     </div>
                   ))}
                 {selectedTimeRange === "medium_term" &&
@@ -244,6 +254,11 @@ function Dashboard({ code }) {
                       />
                       </div>
                       <span className="artist__title">{artist.name}</span>
+                      <div className="artist__link">
+                      <a href={artist.external_urls.spotify} target="_blank" rel="noopener noreferrer" className="artist__btn">
+  <img src={SpotifyIcon} alt="Spotify Icon" />
+</a>
+                    </div>
                     </div>
                   ))}
                 {selectedTimeRange === "long_term" &&
@@ -258,6 +273,11 @@ function Dashboard({ code }) {
                       />
                       </div>
                       <span className="artist__title">{artist.name}</span>
+                      <div className="artist__link">
+                      <a href={artist.external_urls.spotify} target="_blank" rel="noopener noreferrer" className="artist__btn">
+  <img src={SpotifyIcon} alt="Spotify Icon" />
+</a>
+                    </div>
                     </div>
                   ))}
               </div>
@@ -270,6 +290,7 @@ function Dashboard({ code }) {
                 {selectedTimeRange === "short_term" &&
                   topTracksShort.map((track, index) => (
                     <div key={index} className="track">
+                      <div className="track__container">
                       <span className="track__rank">{index + 1}</span>
                       <img
                         src={track.album?.images[0]?.url}
@@ -277,31 +298,69 @@ function Dashboard({ code }) {
                         className="track__image"
                       />
                       <span className="track__title">{track.name}</span>
+                      </div>
+                      <div className="track__container">
+                      
+                      <span className="track__artist">
+                      {track.artists.map(artist => artist.name).join(', ')}
+                      </span>
+                      </div>
+                      <div className="track__link">
+                      <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
+  <img src={SpotifyIcon} alt="Spotify Icon" className="track__icon" />
+</a>
+                    </div>
                     </div>
                   ))}
                 {selectedTimeRange === "medium_term" &&
                   topTracksMedium.map((track, index) => (
                     <div key={index} className="track">
-                      <span className="track__rank">{index + 1}</span>
-                      <img
-                        src={track.album?.images[0]?.url}
-                        alt={track.name}
-                        className="track__image"
-                      />
-                      <span className="track__title">{track.name}</span>
+                    <div className="track__container">
+                    <span className="track__rank">{index + 1}</span>
+                    <img
+                      src={track.album?.images[0]?.url}
+                      alt={track.name}
+                      className="track__image"
+                    />
+                    <span className="track__title">{track.name}</span>
                     </div>
+                    <div className="track__container">
+                    
+                    <span className="track__artist">
+                    {track.artists.map(artist => artist.name).join(', ')}
+                    </span>
+                    </div>
+                    <div className="track__link">
+                    <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
+<img src={SpotifyIcon} alt="Spotify Icon" className="track__icon" />
+</a>
+                  </div>
+                  </div>
                   ))}
                 {selectedTimeRange === "long_term" &&
                   topTracksLong.map((track, index) => (
                     <div key={index} className="track">
-                      <span className="track__rank">{index + 1}</span>
-                      <img
-                        src={track.album?.images[0]?.url}
-                        alt={track.name}
-                        className="track__image"
-                      />
-                      <span className="track__title">{track.name}</span>
+                    <div className="track__container">
+                    <span className="track__rank">{index + 1}</span>
+                    <img
+                      src={track.album?.images[0]?.url}
+                      alt={track.name}
+                      className="track__image"
+                    />
+                    <span className="track__title">{track.name}</span>
                     </div>
+                    <div className="track__container">
+                    
+                    <span className="track__artist">
+                    {track.artists.map(artist => artist.name).join(', ')}
+                    </span>
+                    </div>
+                    <div className="track__link">
+                    <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
+<img src={SpotifyIcon} alt="Spotify Icon" className="track__icon" />
+</a>
+                  </div>
+                  </div>
                   ))}
               </div>
             }
@@ -310,13 +369,15 @@ function Dashboard({ code }) {
             path="/top-genres"
             element={
               <div className="dashboard__genres">
-                {selectedTimeRange === "short_term" &&
-                  topGenresShort.map((genre, index) => (
-                    <div key={index} className="genre">
-                      <span className="genre__rank">{index + 1}</span>
-                      <span className="genre__title">{genre}</span>
-                    </div>
-                  ))}
+              {selectedTimeRange === "short_term" &&
+                topGenresShort.map((genre, index) => (
+                  <div key={index} className="genre">
+                    <span className="genre__rank">{index + 1}</span>
+                    <span className="genre__title">{genre}</span>
+                    <progress value={genre.count} max="100"></progress>
+                  </div>
+                ))
+              }
                 {selectedTimeRange === "medium_term" &&
                   topGenresMedium.map((genre, index) => (
                     <div key={index} className="genre">
