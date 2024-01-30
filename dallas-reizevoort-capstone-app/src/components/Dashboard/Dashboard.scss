@@ -61,6 +61,12 @@
             justify-content: space-between;
         }
 
+        &__genres {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
         .artist {
 
             display: flex;
@@ -148,5 +154,46 @@
         background-color: transparent;
         font-family: 'Share Tech Mono', monospace;
         margin-right: 4rem;
+    }
+
+    .genre {
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+
+        &__container {
+            display: flex;
+            align-items: center;
+            padding-right: 17rem;
+            
+        }
+
+        &__title {
+            
+        }
+
+        &__artist {
+            font-family: 'Share Tech Mono', monospace;
+            padding-right: 1rem;
+        }
+
+        &__link {
+
+            img {
+            width: 28px;
+            height: 28px;
+            }
+        }
+
+        &__rank {
+            font-family: 'Share Tech Mono', monospace;
+            padding-right: 1rem;
+        }
+
+        &__title {
+            font-family: 'Share Tech Mono', monospace;
+        }
     }
 }
