@@ -1,3 +1,9 @@
+
+*
+{
+    font-family: 'Share Tech Mono', monospace;
+}
+
 .header {
     display: flex;
     align-items: center;
@@ -11,6 +17,7 @@
         h1 {
             font-size: 24px;
             padding-right: 2rem;
+            font-family: 'Share Tech Mono', monospace;
         }
 
         img {
@@ -26,9 +33,11 @@
         align-items: center;
         width: 60%;
         margin: auto;
+        
 
 
         &--list {
+            font-family: 'Share Tech Mono', monospace;
             padding-right: 2.5rem;
             text-align: center;
         }

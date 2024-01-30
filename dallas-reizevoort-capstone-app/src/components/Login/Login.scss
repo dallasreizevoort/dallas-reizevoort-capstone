@@ -1,20 +1,54 @@
 
 .login {
-
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    height: 100vh;
+    padding-left: 8rem;
 
-    &__btn {
-        background-color: #1DB954;
-        color: #FFFFFF;
-        width: 150px;
-        height: 50px;
-        border-radius: 4px;
+    
+
+    &__header {
         display: flex;
-        justify-content: center;
-        align-items: center;
-
+        flex-direction: column;
+        font-size: 5.5rem;
+        color: #FFFFFF;
+        word-wrap: break-word;
+        width: 50%;
+        margin: 0;
+        font-family: 'Share Tech Mono', monospace;
     }
+
+    &__text {
+        padding-top: 0.5rem;
+        font-size: 1rem;
+        font-family: 'Share Tech Mono', monospace;
+    }
+
+    &__icon-container {
+        padding-top: 2rem;
+    }
+
+    &__icon {
+        height: 50px;
+        width: 50px;
+    }
+
+
+    &__vector {
+        @keyframes move_line {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(100%);
+            }
+          }
+          
+          .abstract-line {
+            position: absolute;
+            animation: move_line 5s linear infinite;
+          }
+    }
+
 }

@@ -1,5 +1,8 @@
 @use './variables.scss' as *;
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@font-face {
+    font-family: 'Share Tech Mono', monospace;
+    src: url('../../assets//fonts/ShareTechMono-Regular.ttf') format('truetype');
+}
 
 
 *
@@ -8,7 +11,7 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Share Tech Mono', sans-serif;
     background-color: $background-color-primary;
     color: $font-color-primary;
 }

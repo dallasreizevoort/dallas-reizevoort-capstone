@@ -1,5 +1,7 @@
 import React from "react";
+import SpotifyIcon from '../../assets/images/Spotify_Icon_RGB_White.png';
 import "./Login.scss";
+
 const scopes = [
   "user-top-read",
   "streaming",
@@ -25,9 +27,13 @@ const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&r
 function Login() {
   return (
     <div className="login">
-      <a className="login__btn" href={AUTH_URL}>
-        Login With Spotify
+      <h1 className="login__header">SoundTrack Analyzer</h1>
+      <h2 className="login__text">insights into your music taste</h2>
+      <div className="login__icon-container">
+      <a className="login__link" href={AUTH_URL}>
+        <img className="login__icon" src={SpotifyIcon} alt="Spotify Icon" />
       </a>
+      </div>
     </div>
   );
 }

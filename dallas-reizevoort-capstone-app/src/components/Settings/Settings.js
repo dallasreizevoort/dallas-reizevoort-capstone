@@ -33,3 +33,19 @@ function UserSettings() {
 }
 
 export default UserSettings;
+
+// function Logout() {
+//   const logout = () => {
+//     // Clear the access token from local storage (or wherever it's stored)
+//     localStorage.removeItem('accessToken');
+    
+//     // Redirect the user to the login page
+//     window.location.href = '/';
+//   }
+
+//   return (
+//     <button onClick={logout}>Logout</button>
+//   );
+// }
+
+// export default Logout;
