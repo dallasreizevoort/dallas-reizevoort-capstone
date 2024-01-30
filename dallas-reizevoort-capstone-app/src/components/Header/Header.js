@@ -24,6 +24,7 @@ function Header() {
         <Link to="/recently-played">
         <li className="header__nav--list">Recently Played</li>
         </Link>
+        <li className="header__nav--list">Your Mood</li>
       </ul>
       </div>
       <div className="header__settings">

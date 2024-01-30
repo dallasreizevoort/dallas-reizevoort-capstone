@@ -191,13 +191,13 @@ function Dashboard({ code }) {
     <div className="dashboard">
       <Header />
       <section className="dashboard__hero">
-        <button onClick={() => setSelectedTimeRange("short_term")}>
+        <button className="dashboard__btn" onClick={() => setSelectedTimeRange("short_term")}>
           Past 4 weeks
         </button>
-        <button onClick={() => setSelectedTimeRange("medium_term")}>
+        <button className="dashboard__btn" onClick={() => setSelectedTimeRange("medium_term")}>
           Past 6 months
         </button>
-        <button onClick={() => setSelectedTimeRange("long_term")}>
+        <button className="dashboard__btn" onClick={() => setSelectedTimeRange("long_term")}>
           All time
         </button>
 
@@ -221,36 +221,42 @@ function Dashboard({ code }) {
                 {selectedTimeRange === "short_term" &&
                   topArtistsShort.map((artist, index) => (
                     <div key={index} className="artist">
-                      <span className="artist__rank">{index + 1}.</span>
+                      <div className="artist__container">
+                      <span className="artist__rank">{index + 1}</span>
                       <img
                         src={artist.images[0]?.url}
                         alt={artist.name}
                         className="artist__image"
                       />
+                      </div>
                       <span className="artist__title">{artist.name}</span>
                     </div>
                   ))}
                 {selectedTimeRange === "medium_term" &&
                   topArtistsMedium.map((artist, index) => (
                     <div key={index} className="artist">
-                      <span className="artist__rank">{index + 1}.</span>
+                      <div className="artist__container">
+                      <span className="artist__rank">{index + 1}</span>
                       <img
                         src={artist.images[0]?.url}
                         alt={artist.name}
                         className="artist__image"
                       />
+                      </div>
                       <span className="artist__title">{artist.name}</span>
                     </div>
                   ))}
                 {selectedTimeRange === "long_term" &&
                   topArtistsLong.map((artist, index) => (
                     <div key={index} className="artist">
-                      <span className="artist__rank">{index + 1}.</span>
+                      <div className="artist__container">
+                      <span className="artist__rank">{index + 1}</span>
                       <img
                         src={artist.images[0]?.url}
                         alt={artist.name}
                         className="artist__image"
                       />
+                      </div>
                       <span className="artist__title">{artist.name}</span>
                     </div>
                   ))}
@@ -264,7 +270,7 @@ function Dashboard({ code }) {
                 {selectedTimeRange === "short_term" &&
                   topTracksShort.map((track, index) => (
                     <div key={index} className="track">
-                      <span className="track__rank">{index + 1}.</span>
+                      <span className="track__rank">{index + 1}</span>
                       <img
                         src={track.album?.images[0]?.url}
                         alt={track.name}
@@ -276,7 +282,7 @@ function Dashboard({ code }) {
                 {selectedTimeRange === "medium_term" &&
                   topTracksMedium.map((track, index) => (
                     <div key={index} className="track">
-                      <span className="track__rank">{index + 1}.</span>
+                      <span className="track__rank">{index + 1}</span>
                       <img
                         src={track.album?.images[0]?.url}
                         alt={track.name}
@@ -288,7 +294,7 @@ function Dashboard({ code }) {
                 {selectedTimeRange === "long_term" &&
                   topTracksLong.map((track, index) => (
                     <div key={index} className="track">
-                      <span className="track__rank">{index + 1}.</span>
+                      <span className="track__rank">{index + 1}</span>
                       <img
                         src={track.album?.images[0]?.url}
                         alt={track.name}
@@ -307,21 +313,21 @@ function Dashboard({ code }) {
                 {selectedTimeRange === "short_term" &&
                   topGenresShort.map((genre, index) => (
                     <div key={index} className="genre">
-                      <span className="genre__rank">{index + 1}.</span>
+                      <span className="genre__rank">{index + 1}</span>
                       <span className="genre__title">{genre}</span>
                     </div>
                   ))}
                 {selectedTimeRange === "medium_term" &&
                   topGenresMedium.map((genre, index) => (
                     <div key={index} className="genre">
-                      <span className="genre__rank">{index + 1}.</span>
+                      <span className="genre__rank">{index + 1}</span>
                       <span className="genre__title">{genre}</span>
                     </div>
                   ))}
                 {selectedTimeRange === "long_term" &&
                   topGenresLong.map((genre, index) => (
                     <div key={index} className="genre">
-                      <span className="genre__rank">{index + 1}.</span>
+                      <span className="genre__rank">{index + 1}</span>
                       <span className="genre__title">{genre}</span>
                     </div>
                   ))}
@@ -334,7 +340,7 @@ function Dashboard({ code }) {
               <div className="dashboard__recents">
                 {recentlyPlayed.map((track, index) => (
                   <div key={index} className="recent">
-                    <span className="track__rank">{index + 1}.</span>
+                    <span className="track__rank">{index + 1}</span>
                     <img
                       src={track.track.album.images[0].url}
                       alt={track.track.name}
