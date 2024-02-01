@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import './Settings.scss';
+import { useAuthContext } from "../../Auth/AuthProvider";
 
-function UserSettings() {
+function Settings() {
   const [isOpen, setIsOpen] = useState(false);
+
+
+  const { handleLogout } = useAuthContext();
 
   const handleEmailOpt = (e) => {
     // handle email opt in/out
   };
 
   const handleSpotifyRedirect = () => {
-    // redirect to user's Spotify page
+  
     window.location.href = 'https://open.spotify.com';
   };
 
@@ -26,13 +30,14 @@ function UserSettings() {
         <ul className="settings__dropdown">
           <li onClick={handleEmailOpt}>Toggle Email Opt-In/Out</li>
           <li onClick={handleSpotifyRedirect}>Go to Spotify</li>
+          <li onClick={handleLogout}>Logout</li>
         </ul>
       )}
     </div>
   );
 }
 
-export default UserSettings;
+export default Settings;
 
 // function Logout() {
 //   const logout = () => {

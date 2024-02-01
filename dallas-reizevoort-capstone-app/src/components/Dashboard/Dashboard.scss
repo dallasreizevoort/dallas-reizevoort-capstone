@@ -56,9 +56,7 @@
         }
 
         &__tracks {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            width: 80%;
         }
 
         &__genres {
@@ -82,6 +80,7 @@
 
             &__title {
                 padding-right: 17rem;
+                font-size: 13px;
             }
 
             &__link {
@@ -95,15 +94,17 @@
             &__rank {
                 font-family: 'Share Tech Mono', monospace;
                 padding-right: 1rem;
+                font-size: 13px;
             }
 
             &__title {
                 font-family: 'Share Tech Mono', monospace;
+                font-size: 13px;
             }
         }
 
         .track {
-
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -112,16 +113,19 @@
             &__container {
                 display: flex;
                 align-items: center;
-                padding-right: 17rem;
+                width: 40%;
                 
             }
 
             &__title {
-                
+                font-family: 'Share Tech Mono', monospace;
+                font-size: 13px;
+                padding-left: 1rem;
             }
 
             &__artist {
                 font-family: 'Share Tech Mono', monospace;
+                font-size: 13px;
                 padding-right: 1rem;
             }
 

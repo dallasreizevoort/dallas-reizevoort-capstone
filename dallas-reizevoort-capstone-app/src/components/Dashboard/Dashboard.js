@@ -1,5 +1,5 @@
 import React from "react";
-import useAuth from "../../useAuth";
+import useAuth from "../../Auth/useAuth";
 import { useState, useEffect, useRef } from "react";
 import "./Dashboard.scss";
 import spotifyWebApi from "spotify-web-api-node";
@@ -167,6 +167,8 @@ const [totalGenresLong, setTotalGenresLong] = useState(0);
           }
         });
     });
+
+  console.log('API', spotifyApi);
 
     spotifyApi.current.getMyTopTracks({ limit: 50 }).then((res) => {
       setTopTracks(res.body.items);

@@ -21,8 +21,8 @@ const state =
 
 const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(
   redirectUri
-)}&scope=${encodeURIComponent(scopes.join(" "))}&state=${state}`;
-// "https://accounts.spotify.com/authorize?client_id=6ba0cc8b29e145ea99f2401c09a35e6e&response_type=code&redirect_uri=http://localhost:3000&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
+)}&scope=${encodeURIComponent(scopes.join(" "))}&state=${state}&show_dialog=true`;
+console.log('Authorization URL:', AUTH_URL);
 
 function Login() {
   return (
@@ -39,3 +39,6 @@ function Login() {
 }
 
 export default Login;
+
+
+
