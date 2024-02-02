@@ -1,203 +1,192 @@
-@use '../../styles/partials/variables.scss' as *;
-@use '../../styles/partials/global.scss' as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/global.scss" as *;
 
 .dashboard {
+  margin: 1.5rem;
 
-    margin: 1.5rem;
-    
+  &__hero {
+    display: flex;
+    flex-direction: row;
+    padding: 5rem 0rem 2rem 0rem;
+    justify-content: center;
+    align-items: center;
+  }
 
-    &__hero {
-        display: flex;
-        flex-direction: row;
-        padding: 5rem 0rem 2rem 0rem;
-        justify-content: center;
-        align-items: center;
-        
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    input {
+      width: 250px;
+      height: 38px;
+      background-color: $background-color-primary;
+    }
+  }
+
+  &__button {
+    background-color: $purple-primary;
+    color: #ffffff;
+    width: 175px;
+    height: 38px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+
+    &__artists {
+      display: flex;
+      justify-content: space-between;
     }
 
-    &__form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-       
-         
-
-        input {
-            width: 250px;
-            height: 38px;
-            background-color: $background-color-primary;
-            
-        }
-       
+    &__tracks {
+      width: 80%;
     }
 
-    &__button {
-        background-color: $purple-primary;
-        color: #FFFFFF;
-        width: 175px;
-        height: 38px;
-        border-radius: 4px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
+    &__genres {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    &__top {
+    .artist {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1rem;
+
+      &__container {
         display: flex;
-        justify-content: center;
         align-items: center;
-        padding-top: 2rem;
+        padding-right: 17rem;
+      }
 
-        &__artists {
-            display: flex;
-            justify-content: space-between;
+      &__title {
+        padding-right: 17rem;
+        font-size: 13px;
+      }
 
+      &__link {
+        img {
+          width: 28px;
+          height: 28px;
         }
+      }
 
-        &__tracks {
-            width: 80%;
-        }
+      &__rank {
+        font-family: "Share Tech Mono", monospace;
+        padding-right: 1rem;
+        font-size: 13px;
+      }
 
-        &__genres {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+      &__title {
+        font-family: "Share Tech Mono", monospace;
+        font-size: 13px;
+      }
+    }
 
-        .artist {
+    .track {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1rem;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-bottom: 1rem;
+      &__container {
+        display: flex;
+        align-items: center;
+        width: 40%;
+      }
 
-            &__container {
-                display: flex;
-                align-items: center;
-                padding-right: 17rem;
-            }
+      &__title {
+        font-family: "Share Tech Mono", monospace;
+        font-size: 13px;
+        padding-left: 1rem;
+      }
 
-            &__title {
-                padding-right: 17rem;
-                font-size: 13px;
-            }
+      &__artist {
+        font-family: "Share Tech Mono", monospace;
+        font-size: 13px;
+        padding-right: 1rem;
+      }
 
-            &__link {
-
-                img {
-                width: 28px;
-                height: 28px;
-                }
-            }
-
-            &__rank {
-                font-family: 'Share Tech Mono', monospace;
-                padding-right: 1rem;
-                font-size: 13px;
-            }
-
-            &__title {
-                font-family: 'Share Tech Mono', monospace;
-                font-size: 13px;
-            }
-        }
-
-        .track {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-bottom: 1rem;
-
-            &__container {
-                display: flex;
-                align-items: center;
-                width: 40%;
-                
-            }
-
-            &__title {
-                font-family: 'Share Tech Mono', monospace;
-                font-size: 13px;
-                padding-left: 1rem;
-            }
-
-            &__artist {
-                font-family: 'Share Tech Mono', monospace;
-                font-size: 13px;
-                padding-right: 1rem;
-            }
-
-            &__link {
-
-                img {
-                width: 28px;
-                height: 28px;
-                }
-            }
-
-            &__rank {
-                font-family: 'Share Tech Mono', monospace;
-                padding-right: 1rem;
-            }
-
-            &__title {
-                font-family: 'Share Tech Mono', monospace;
-            }
+      &__link {
+        button {
+          border: none;
+          background-color: transparent;
         }
 
         img {
-            width: 50px;
-            height: 50px;
+          width: 28px;
+          height: 28px;
         }
+      }
+
+      &__rank {
+        font-family: "Share Tech Mono", monospace;
+        padding-right: 1rem;
+      }
+
+      &__title {
+        font-family: "Share Tech Mono", monospace;
+      }
     }
 
-    &__btn {
-        border: none;
-        background-color: transparent;
-        font-family: 'Share Tech Mono', monospace;
-        margin-right: 4rem;
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__btn {
+    border: none;
+    background-color: transparent;
+    font-family: "Share Tech Mono", monospace;
+    margin-right: 4rem;
+  }
+
+  .genre {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+
+    &__container {
+      display: flex;
+      align-items: center;
+      padding-right: 17rem;
     }
 
-    .genre {
-
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-bottom: 1rem;
-
-        &__container {
-            display: flex;
-            align-items: center;
-            padding-right: 17rem;
-            
-        }
-
-        &__title {
-            
-        }
-
-        &__artist {
-            font-family: 'Share Tech Mono', monospace;
-            padding-right: 1rem;
-        }
-
-        &__link {
-
-            img {
-            width: 28px;
-            height: 28px;
-            }
-        }
-
-        &__rank {
-            font-family: 'Share Tech Mono', monospace;
-            padding-right: 1rem;
-        }
-
-        &__title {
-            font-family: 'Share Tech Mono', monospace;
-        }
+    &__title {
     }
+
+    &__artist {
+      font-family: "Share Tech Mono", monospace;
+      padding-right: 1rem;
+    }
+
+    &__link {
+      img {
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    &__rank {
+      font-family: "Share Tech Mono", monospace;
+      padding-right: 1rem;
+    }
+
+    &__title {
+      font-family: "Share Tech Mono", monospace;
+    }
+  }
 }
