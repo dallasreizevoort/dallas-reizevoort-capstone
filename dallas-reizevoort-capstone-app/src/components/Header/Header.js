@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./Header.scss";
 import Settings from "../Settings/Settings";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import HeaderLogo from "../../assets/images/sound-waves.png";
+import ExpandArrow from "../../assets/images/Expand_Arrow.png";
 
 function Header() {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -14,12 +15,16 @@ function Header() {
   return (
     <div className="header">
       <div className="header__container">
-        <img src={HeaderLogo} alt="logo" />
+        <img className="header__container--logo" src={HeaderLogo} alt="logo" />
         <h1>Soundtrack Analyzer</h1>
 
         <ul className="header__nav">
+          
           <li className="header__nav--list" onClick={toggleDropdown}>
-            Statistics
+          <div className="header__nav--container">
+            Stats <img className="header__nav--icon" src={ExpandArrow} alt="expand arrow" />
+            </div>
+            
             {isDropdownVisible && (
               <ul className="header__dropdown">
                 <Link to="/dashboard/tracks">
@@ -37,17 +42,22 @@ function Header() {
               </ul>
             )}
           </li>
+          <Link to="/dashboard/mood">
           <li className="header__nav--list">Your Mood</li>
-          <Link to="/dashboard/playlist">
-          <li className="header__nav--list">Create a Playlist</li>
           </Link>
+          <Link to="/dashboard/playlist">
+            <li className="header__nav--list">Create a Playlist</li>
+          </Link>
+          <Settings />
         </ul>
       </div>
-      <div className="header__settings">
-        <Settings />
+       
       </div>
-    </div>
+  
   );
 }
 
 export default Header;
+
+
+

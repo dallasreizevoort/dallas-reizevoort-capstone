@@ -1,54 +1,64 @@
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
 
 .login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  padding-left: 2rem;
+
+  @include tablet {
+    padding-left: 6rem;
+  }
+
+  @include desktop {
     padding-left: 8rem;
+  }
 
-    
+  &__header {
+    font-size: 42px;
+    font-weight: $font-weight-bold;
 
-    &__header {
-        display: flex;
-        flex-direction: column;
-        font-size: 5.5rem;
-        color: #FFFFFF;
-        word-wrap: break-word;
-        width: 50%;
-        margin: 0;
-        font-family: 'Share Tech Mono', monospace;
+    @include tablet {
+      font-size: 68px;
+      font-weight: $font-weight-bold;
+      width: 50%;
     }
 
-    &__text {
-        padding-top: 0.5rem;
-        font-size: 1rem;
-        font-family: 'Share Tech Mono', monospace;
+    @include desktop {
+      display: flex;
+      flex-direction: column;
+      font-size: 88px;
+      color: #ffffff;
+      word-wrap: break-word;
+      width: 50%;
+      margin: 0;
+      font-family: "Gotham", monospace;
+      font-weight: $font-weight-bold;
     }
+  }
 
-    &__icon-container {
-        padding-top: 2rem;
+  &__text {
+    font-size: 13px;
+    padding-top: 0.5rem;
+
+    @include tablet {
+      font-size: 1rem;
     }
-
-    &__icon {
-        height: 50px;
-        width: 50px;
+    @include desktop {
+      padding-top: 0.5rem;
+      font-size: 1rem;
+      font-family: "Gotham", monospace;
     }
+  }
 
+  &__icon-container {
+    padding-top: 2rem;
+  }
 
-    &__vector {
-        @keyframes move_line {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(100%);
-            }
-          }
-          
-          .abstract-line {
-            position: absolute;
-            animation: move_line 5s linear infinite;
-          }
-    }
-
+  &__icon {
+    height: 50px;
+    width: 50px;
+  }
 }

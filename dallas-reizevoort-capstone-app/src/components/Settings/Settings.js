@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Settings.scss';
 import { useAuthContext } from "../../Auth/AuthProvider";
+import DropDownArrow from "../../assets/images/Expand_Arrow.png";
 
 function Settings() {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,7 @@ function Settings() {
   return (
     <div className="settings">
       <h2 className="settings__title" onClick={toggleDropdown}>
-        Settings &#9662;
+        Settings <img className="settings__icon" src={DropDownArrow} alt="expand arrow" />
       </h2>
       {isOpen && (
         <ul className="settings__dropdown">
@@ -39,18 +40,3 @@ function Settings() {
 
 export default Settings;
 
-// function Logout() {
-//   const logout = () => {
-//     // Clear the access token from local storage (or wherever it's stored)
-//     localStorage.removeItem('accessToken');
-    
-//     // Redirect the user to the login page
-//     window.location.href = '/';
-//   }
-
-//   return (
-//     <button onClick={logout}>Logout</button>
-//   );
-// }
-
-// export default Logout;

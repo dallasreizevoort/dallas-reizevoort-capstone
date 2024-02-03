@@ -1,5 +1,5 @@
 import React from "react";
-import SpotifyIcon from '../../assets/images/Spotify_Icon_RGB_White.png';
+import SpotifyIcon from "../../assets/images/Spotify_Icon_RGB_Green.png";
 import "./Login.scss";
 
 const scopes = [
@@ -23,8 +23,10 @@ const state =
 
 const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(
   redirectUri
-)}&scope=${encodeURIComponent(scopes.join(" "))}&state=${state}&show_dialog=true`;
-console.log('Authorization URL:', AUTH_URL);
+)}&scope=${encodeURIComponent(
+  scopes.join(" ")
+)}&state=${state}&show_dialog=true`;
+console.log("Authorization URL:", AUTH_URL);
 
 function Login() {
   return (
@@ -32,15 +34,12 @@ function Login() {
       <h1 className="login__header">SoundTrack Analyzer</h1>
       <h2 className="login__text">insights into your music taste</h2>
       <div className="login__icon-container">
-      <a className="login__link" href={AUTH_URL}>
-        <img className="login__icon" src={SpotifyIcon} alt="Spotify Icon" />
-      </a>
+        <a className="login__link" href={AUTH_URL}>
+          <img className="login__icon" src={SpotifyIcon} alt="Spotify Icon" />
+        </a>
       </div>
     </div>
   );
 }
 
 export default Login;
-
-
-

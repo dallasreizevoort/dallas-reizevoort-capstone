@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import spotifyWebApi from 'spotify-web-api-node';
 import SpotifyIcon from "../../assets/images/Spotify_Icon_RGB_White.png";
+import './Genres.scss';
 
 function Genres( {accessToken, selectedTimeRange}) {
     const [topGenresShort, setTopGenresShort] = useState([]);
@@ -46,13 +47,13 @@ function Genres( {accessToken, selectedTimeRange}) {
     }, [accessToken]);
 
       return (
-        <div className="dashboard__genres">
+        <div className="genres">
         {selectedTimeRange === "short_term" &&
           topGenresShort.length > 0 && (
             <>
               {topGenresShort.map(([genre, count], index) => (
-                <div key={index} className="genre">
-                  <div className="genre__container">
+                <div key={index} className="genres__wrapper">
+                  <div className="genre">
                     <span className="genre__rank">{index + 1}</span>
                     <span className="genre__title">{genre}</span>
                   </div>
@@ -70,9 +71,11 @@ function Genres( {accessToken, selectedTimeRange}) {
           topGenresMedium.length > 0 && (
             <>
               {topGenresMedium.map(([genre, count], index) => (
-                <div key={index} className="genre">
+                <div key={index} className="genres__wrapper">
+                  <div className="genre">
                   <span className="genre__rank">{index + 1}</span>
                   <span className="genre__title">{genre}</span>
+                  </div>
                   <progress
                     value={count}
                     max={Math.max(
@@ -90,9 +93,11 @@ function Genres( {accessToken, selectedTimeRange}) {
                 ([genre, count], index) => (
                   console.log("count", count),
                   (
-                    <div key={index} className="genre">
+                    <div key={index} className="genres__wrapper">
+                      <div className="genre">
                       <span className="genre__rank">{index + 1}</span>
                       <span className="genre__title">{genre}</span>
+                      </div>
                       <progress
                         value={count}
                         max={Math.max(

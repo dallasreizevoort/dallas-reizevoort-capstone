@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import spotifyWebApi from 'spotify-web-api-node';
-import SpotifyIcon from "../../assets/images/Spotify_Icon_RGB_Green.png";
+import SpotifyIcon from "../../assets/images/Spotify_Play.png";
+import './Artists.scss';
 
 function Artists({ accessToken, selectedTimeRange}) {
     const [topArtistsShort, setTopArtistsShort] = useState([]);
@@ -36,7 +37,7 @@ function Artists({ accessToken, selectedTimeRange}) {
 
     // Render your artists here
     return (
-        <div className="dashboard__artists">
+        <div className="artists">
            {selectedTimeRange === "short_term" &&
                   topArtistsShort.map((artist, index) => (
                     <div key={index} className="artist">
@@ -54,9 +55,9 @@ function Artists({ accessToken, selectedTimeRange}) {
                           href={artist.external_urls.spotify}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="artist__btn"
+                          className="artist__button"
                         >
-                          <img src={SpotifyIcon} alt="Spotify Icon" />
+                          <img className="artist__icon" src={SpotifyIcon} alt="Spotify Icon" />
                         </a>
                       </div>
                     </div>
@@ -78,9 +79,9 @@ function Artists({ accessToken, selectedTimeRange}) {
                           href={artist.external_urls.spotify}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="artist__btn"
+                          className="artist__button"
                         >
-                          <img src={SpotifyIcon} alt="Spotify Icon" />
+                          <img className="artist__icon" src={SpotifyIcon} alt="Spotify Icon" />
                         </a>
                       </div>
                     </div>
@@ -102,9 +103,9 @@ function Artists({ accessToken, selectedTimeRange}) {
                           href={artist.external_urls.spotify}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="artist__btn"
+                          className="artist__button"
                         >
-                          <img src={SpotifyIcon} alt="Spotify Icon" />
+                          <img className="artist__icon" src={SpotifyIcon} alt="Spotify Icon" />
                         </a>
                       </div>
                     </div>

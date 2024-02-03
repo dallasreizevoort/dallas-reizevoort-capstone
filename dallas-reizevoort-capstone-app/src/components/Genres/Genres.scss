@@ -1,0 +1,32 @@
+@use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/global.scss' as *;
+
+
+.genres {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+    }
+}
+
+
+.genre {
+    display: flex;
+      align-items: center;
+      padding-right: 17rem;
+
+
+      &__rank {
+        padding-right: 1rem;
+      }
+
+      &__title {
+        
+      }
+}

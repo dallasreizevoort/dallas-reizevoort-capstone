@@ -1,4 +1,24 @@
+@use '../../styles/partials/variables.scss' as *;
 
+// media queries
+@mixin mobile {
+    @media (min-width: #{$mobile-width}) {
+      @content;
+    }
+  }
+  
+  @mixin tablet {
+    @media (min-width: #{$tablet-width}) {
+      @content;
+    }
+  }
+  
+  @mixin desktop {
+    @media (min-width: #{$desktop-width}) {
+      @content;
+    }
+  }
+  
 
 
 @mixin header-h1 {
