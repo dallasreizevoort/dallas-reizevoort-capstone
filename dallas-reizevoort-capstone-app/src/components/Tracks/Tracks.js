@@ -5,6 +5,7 @@ import SpotifyPlayer from "../SpotifyPlayer/SpotifyPlayer";
 import "./Tracks.scss";
 
 function Tracks({ accessToken, selectedTimeRange }) {
+  console.log('Tracks component rendered');
   const [topTracks, setTopTracks] = useState([]);
   const [topTracksShort, setTopTracksShort] = useState([]);
   const [topTracksMedium, setTopTracksMedium] = useState([]);
@@ -23,28 +24,28 @@ function Tracks({ accessToken, selectedTimeRange }) {
   };
 
   useEffect(() => {
-    if (!accessToken) return;
-    spotifyApi.current.setAccessToken(accessToken);
+    const fetchData = async () => {
+      if (!accessToken) return;
+      spotifyApi.current.setAccessToken(accessToken);
 
-    spotifyApi.current.getMyTopTracks({ limit: 50 }).then((res) => {
-      setTopTracks(res.body.items);
+      const { body: { items: topTracks } } = await spotifyApi.current.getMyTopTracks({ limit: 50 });
+      console.log('Top Tracks:', topTracks); // Add this line
+      setTopTracks(topTracks);
 
-      spotifyApi.current
-        .getMyTopTracks({ time_range: "short_term", limit: 50 })
-        .then((res) => {
-          setTopTracksShort(res.body.items);
-        });
-      spotifyApi.current
-        .getMyTopTracks({ time_range: "medium_term", limit: 50 })
-        .then((res) => {
-          setTopTracksMedium(res.body.items);
-        });
-      spotifyApi.current
-        .getMyTopTracks({ time_range: "long_term", limit: 50 })
-        .then((res) => {
-          setTopTracksLong(res.body.items);
-        });
-    });
+      const { body: { items: topTracksShort } } = await spotifyApi.current.getMyTopTracks({ time_range: "short_term", limit: 50 });
+      console.log('Short Term Top Tracks:', topTracksShort); // Add this line
+      setTopTracksShort(topTracksShort);
+
+      const { body: { items: topTracksMedium } } = await spotifyApi.current.getMyTopTracks({ time_range: "medium_term", limit: 50 });
+      console.log('Medium Term Top Tracks:', topTracksMedium); // Add this line
+      setTopTracksMedium(topTracksMedium);
+
+      const { body: { items: topTracksLong } } = await spotifyApi.current.getMyTopTracks({ time_range: "long_term", limit: 50 });
+      console.log('Long Term Top Tracks:', topTracksLong); // Add this line
+      setTopTracksLong(topTracksLong);
+    };
+
+    fetchData();
   }, [accessToken]);
 
   // Render your tracks here

@@ -1,64 +1,57 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+// // useAuth.js
+// import React, { useState, useEffect } from "react";
+// import axios from "axios";
+// import { useNavigate } from 'react-router-dom';
 
-function useAuth(code) {
-  const [accessToken, setAccessToken] = useState();
-  const [refreshToken, setRefreshToken] = useState();
-  const [expiresIn, setExpiresIn] = useState();
+// function useAuth(code) {
+//   const [accessToken, setAccessToken] = useState();
+//   const [refreshToken, setRefreshToken] = useState();
+//   const [expiresIn, setExpiresIn] = useState();
+//   const [loading, setLoading] = useState(true);
+//   const navigate = useNavigate();
+//   console.log(code);
 
-  useEffect(() => {
-    console.log('Access token:', accessToken);
-  }, [accessToken]);
+//   useEffect(() => {
+//     if (!code) return;
+//     console.log('code:', code);
+//     axios
+//       .post("http://localhost:3001/login", { code })
+//       .then((res) => {
+//         console.log('res.data:', res.data);
+//         setAccessToken(res.data.accessToken);
+//         setRefreshToken(res.data.refreshToken);
+//         setExpiresIn(res.data.expiresIn);
+//         setLoading(false);
+//       })
+//       .catch((error) => {
+//         console.error('Error during axios.post call to /login:', error);
+//         navigate('/');
+//       });
+//   }, [code, navigate]);
 
-  useEffect(() => {
-    if (!code) return;
+//   useEffect(() => {
+//     if (!refreshToken || !expiresIn) return;
+//     const interval = setInterval(() => {
+//       axios
+//         .post("http://localhost:3001/refresh", { refreshToken })
+//         .then((res) => {
+//           console.log('res.data:', res.data);
+//           setAccessToken(res.data.accessToken);
+//           setExpiresIn(res.data.expiresIn);
+//         })
+//         .catch((error) => {
+//           console.error('Error during axios.post call to /refresh:', error);
+//           navigate('/');
+//         });
+//     }, (expiresIn - 60) * 1000);
 
-    axios
-      .post("http://localhost:3001/login", {
-        code,
-      })
-      .then((res) => {
-        if (res.data && res.data.accessToken && res.data.refreshToken && res.data.expiresIn) {
-          setAccessToken(res.data.accessToken);
-          setRefreshToken(res.data.refreshToken);
-          setExpiresIn(res.data.expiresIn);
-          console.log('Login response:', res.data);
-        } else {
-          console.error('Unexpected response from Spotify API:', res.data);
-        }
-      })
-      .catch((error) => {
-        if (error.response && error.response.status === 400) {
-          console.error('Bad Request error when logging in:', error.response.data);
-        } else {
-          console.error('Error when logging in:', error);
-        }
-      });
-  }, [code]);
+//     return () => clearInterval(interval);
+//   }, [refreshToken, expiresIn, navigate]);
 
-  useEffect(() => {
-    if (!refreshToken || !expiresIn) return;
-    const interval = setInterval(() => {
-      console.log('Refresh token:', refreshToken);
-      axios
-        .post("http://localhost:3001/refresh", {
-          refreshToken,
-        })
-        .then((res) => {
-          setAccessToken(res.data.accessToken);
-          setExpiresIn(res.data.expiresIn);
-          console.log('Refresh response:', res.data);
-        })
-        .catch((error) => {
-          console.error('Error when refreshing token:', error);
-          window.location = "/";
-        });
-    }, (expiresIn - 60) * 1000);
+//   console.log('accessToken:', accessToken);
+//   console.log('loading:', loading);
 
-    return () => clearInterval(interval);
-  }, [refreshToken, expiresIn]);
+//   return { accessToken, loading };
+// }
 
-  return accessToken;
-}
-
-export default useAuth;
+// export default useAuth;

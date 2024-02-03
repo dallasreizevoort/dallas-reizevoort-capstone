@@ -15,8 +15,10 @@ function Header() {
   return (
     <div className="header">
       <div className="header__container">
+        <div className="header__wrapper">
         <img className="header__container--logo" src={HeaderLogo} alt="logo" />
         <h1>Soundtrack Analyzer</h1>
+        </div>
 
         <ul className="header__nav">
           

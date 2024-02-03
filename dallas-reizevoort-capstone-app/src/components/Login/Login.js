@@ -15,8 +15,8 @@ const scopes = [
   "playlist-modify-public",
   "playlist-modify-private",
 ];
-const redirectUri = "http://localhost:3000";
-const clientId = "6ba0cc8b29e145ea99f2401c09a35e6e";
+const clientId = process.env.REACT_APP_CLIENT_ID;
+const redirectUri = process.env.REACT_APP_REDIRECT_URI;
 const state =
   Math.random().toString(36).substring(2, 15) +
   Math.random().toString(36).substring(2, 15);
@@ -26,9 +26,12 @@ const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&r
 )}&scope=${encodeURIComponent(
   scopes.join(" ")
 )}&state=${state}&show_dialog=true`;
-console.log("Authorization URL:", AUTH_URL);
 
 function Login() {
+  console.log('clientId:', clientId);
+  console.log('redirectUri:', redirectUri);
+  console.log('state:', state);
+  console.log('AUTH_URL:', AUTH_URL);
   return (
     <div className="login">
       <h1 className="login__header">SoundTrack Analyzer</h1>

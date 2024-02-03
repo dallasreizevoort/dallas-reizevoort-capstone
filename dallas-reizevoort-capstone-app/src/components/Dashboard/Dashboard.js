@@ -1,5 +1,4 @@
 import React from "react";
-import useAuth from "../../Auth/useAuth";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./Dashboard.scss";
@@ -13,16 +12,15 @@ import Mood from "../Mood/Mood";
 
 import { Routes, Route } from "react-router-dom";
 
-function Dashboard({ code }) {
-  const accessToken = useAuth(code);
+function Dashboard() {
   const location = useLocation();
 
   const [selectedTimeRange, setSelectedTimeRange] = useState("short_term");
 
   const showButtons =
-    location.pathname.includes("/dashboard/artists") ||
-    location.pathname.includes("/dashboard/tracks") ||
-    location.pathname.includes("/dashboard/genres");
+    location.pathname.includes("/artists") ||
+    location.pathname.includes("/tracks") ||
+    location.pathname.includes("/genres");
 
   return (
     <div className="dashboard">
@@ -54,43 +52,40 @@ function Dashboard({ code }) {
       <div className="dashboard__top">
         <Routes>
           <Route
-            path="/dashboard/artists"
+            path="artists"
             element={
               <Artists
-                accessToken={accessToken}
                 selectedTimeRange={selectedTimeRange}
               />
             }
           />
           <Route
-            path="/dashboard/tracks"
+            path="tracks"
             element={
               <Tracks
-                accessToken={accessToken}
                 selectedTimeRange={selectedTimeRange}
               />
             }
           />
           <Route
-            path="/dashboard/genres"
+            path="genres"
             element={
               <Genres
-                accessToken={accessToken}
                 selectedTimeRange={selectedTimeRange}
               />
             }
           />
           <Route
-            path="/dashboard/recent"
-            element={<RecentlyPlayed accessToken={accessToken} />}
+            path="recent"
+            element={<RecentlyPlayed />}
           />
           <Route
-            path="/dashboard/playlist"
-            element={<Playlist accessToken={accessToken} />}
+            path="playlist"
+            element={<Playlist />}
           />
           <Route
-          path="/dashboard/mood"
-          element={<Mood accessToken={accessToken} />}
+          path="mood"
+          element={<Mood />}
           />
         </Routes>
         

@@ -1,9 +1,11 @@
 @use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
 @use "../../styles/partials/global.scss" as *;
 
 .dashboard {
-  margin: 1.5rem;
-
+  @include desktop {
+    margin: 1.5rem;
+  }
   &__hero {
     display: flex;
     flex-direction: row;
