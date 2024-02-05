@@ -1,0 +1,56 @@
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/global.scss" as *;
+
+.tracks {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+  }
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  width: 40%;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    width: 40%;
+  }
+
+  &__rank {
+    padding-right: 0.5rem;
+  }
+
+  &__image {
+    width: 42px;
+    height: 42px;
+  }
+
+  &__title {
+    font-size: 13px;
+    padding-left: 0.5rem;
+  }
+
+  &__artist {
+    font-size: 13px;
+  }
+
+  &__button {
+    border: none;
+    background-color: transparent;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__link {
+    width: 10%;
+  }
+}

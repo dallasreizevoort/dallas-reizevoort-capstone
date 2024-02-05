@@ -1,41 +1,114 @@
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/global.scss" as *;
 
 .dashboard {
+  padding: 2rem 1rem 1rem 1rem;
+  width: 100%;
+  @include desktop {
+    margin: 1.5rem;
+    overflow: visible;
+  }
+
+  &--container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  &__selected-btn {
+    border: none;
+    background-color: transparent;
+    padding: 2rem 0rem 2rem 0rem;
+  }
+
+  &__icons {
+    width: 50px;
+    height: 50px;
+
+    &--container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__selected-btn.active {
+    border-bottom: 2px solid $secondary-color-green;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+  }
+
+  &__nav-list {
+    margin-top: 0.5rem;
+    font-size: 13px;
+
+    &--arrow {
+      color: $secondary-color-green;
+    }
+  }
+
+  &__dropdown-wrapper {
     display: flex;
     flex-direction: column;
-    
+    align-items: center;
+  }
 
-    &__form {
-        margin-top: 200px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-       
-         
+  &__dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
 
-        input {
-            width: 250px;
-            height: 50px;
-        }
-       
+    &--item {
+      background-color: $secondary-color-green;
+      border-radius: 20px;
+      color: $background-color-primary;
+      padding: 7px;
+      font-size: 13px;
+      border: none;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      display: block;
+      z-index: 1;
+      text-align: center;
     }
+  }
 
-    &__button {
-        background-color: #1DB954;
-        color: #FFFFFF;
-        width: 150px;
-        height: 50px;
-        border-radius: 4px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-    }
+  &__button {
+    color: #ffffff;
+    width: 175px;
+    height: 38px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+  }
 
-    &__top {
+  &__pages {
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+  }
 
-        img {
-            width: 64px;
-            height: 64px;
-        }
-    }
+  &__btn {
+    border: none;
+    background-color: transparent;
+    font-family: "Gotham", monospace;
+    margin-right: 4rem;
+  }
 }
