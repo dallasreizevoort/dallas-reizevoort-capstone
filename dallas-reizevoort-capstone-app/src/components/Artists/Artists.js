@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import spotifyWebApi from 'spotify-web-api-node';
-import SpotifyIcon from "../../assets/images/Spotify_Play.png";
+import SpotifyIcon from "../../assets/images/Spotify_Icon_RGB_Green.png";
 import './Artists.scss';
 
-function Artists({ accessToken, selectedTimeRange}) {
+function Artists({ accessToken, selectedTimeRange, }) {
     const [topArtistsShort, setTopArtistsShort] = useState([]);
     const [topArtistsMedium, setTopArtistsMedium] = useState([]);
     const [topArtistsLong, setTopArtistsLong] = useState([]);
@@ -49,6 +49,7 @@ function Artists({ accessToken, selectedTimeRange}) {
                           className="artist__image"
                         />
                       </div>
+                      <div className="artist__container">
                       <span className="artist__title">{artist.name}</span>
                       <div className="artist__link">
                         <a
@@ -59,6 +60,7 @@ function Artists({ accessToken, selectedTimeRange}) {
                         >
                           <img className="artist__icon" src={SpotifyIcon} alt="Spotify Icon" />
                         </a>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -73,6 +75,7 @@ function Artists({ accessToken, selectedTimeRange}) {
                           className="artist__image"
                         />
                       </div>
+                      <div className="artist__container">
                       <span className="artist__title">{artist.name}</span>
                       <div className="artist__link">
                         <a
@@ -83,6 +86,7 @@ function Artists({ accessToken, selectedTimeRange}) {
                         >
                           <img className="artist__icon" src={SpotifyIcon} alt="Spotify Icon" />
                         </a>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -97,6 +101,7 @@ function Artists({ accessToken, selectedTimeRange}) {
                           className="artist__image"
                         />
                       </div>
+                      <div className="artist__container">
                       <span className="artist__title">{artist.name}</span>
                       <div className="artist__link">
                         <a
@@ -107,6 +112,7 @@ function Artists({ accessToken, selectedTimeRange}) {
                         >
                           <img className="artist__icon" src={SpotifyIcon} alt="Spotify Icon" />
                         </a>
+                        </div>
                       </div>
                     </div>
                   ))}

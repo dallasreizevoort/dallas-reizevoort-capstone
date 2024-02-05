@@ -6,7 +6,7 @@ function SpotifyPlayer({ trackId }) {
     <div className="spotify-player">
     <iframe 
   src={`https://open.spotify.com/embed/track/${trackId}?theme=white&view=list`} 
-  width="400" 
+  width="300" 
   height="150" 
   frameborder="0" 
   allowtransparency="true" 

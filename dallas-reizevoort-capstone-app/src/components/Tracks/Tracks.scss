@@ -16,6 +16,8 @@
   align-items: center;
   width: 40%;
 
+  
+
   &__container {
     display: flex;
     align-items: center;
@@ -23,22 +25,21 @@
   }
 
   &__rank {
-    padding-right: 1rem;
+    padding-right: 0.5rem;
   }
 
   &__image {
-    width: 50px;
-    height: 50px;
+    width: 42px;
+    height: 42px;
   }
 
   &__title {
     font-size: 13px;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
   }
 
   &__artist {
     font-size: 13px;
-    padding-right: 1rem;
   }
 
   &__button {

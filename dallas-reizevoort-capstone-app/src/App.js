@@ -9,22 +9,20 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./Auth/AuthContext";
 
 function App() {
-  const [code, setCode] = useState(null);
-  
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get("code");
 
   return (
-    
-      <Router>
-        <AuthProvider code={code}>
-        <RedirectHandler setCode={setCode} />
+    <Router>
+      <AuthProvider code={code}>
+        <RedirectHandler code={code} />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard/*" element={<Dashboard code={code} />} />
           <Route path="/" element={<Login />} />
         </Routes>
-        </AuthProvider>
-      </Router>
-      
+      </AuthProvider>
+    </Router>
   );
 }
 

@@ -3,28 +3,92 @@
 @use "../../styles/partials/global.scss" as *;
 
 .dashboard {
+  padding: 2rem 1rem 1rem 1rem;
   @include desktop {
     margin: 1.5rem;
+    overflow: visible;
   }
-  &__hero {
+
+  &--container {
     display: flex;
-    flex-direction: row;
-    padding: 5rem 0rem 2rem 0rem;
+    align-items: center;
     justify-content: center;
+  }
+
+  &__btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  &__selected-btn {
+    border: none;
+    background-color: transparent;
+    padding: 2rem 0rem 2rem 0rem;
+  }
+
+  &__icons {
+    width: 50px;
+    height: 50px;
+
+    &--container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__selected-btn.active {
+    border-bottom: 2px solid $secondary-color-green;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+
+    &--list {
+      margin-top: 0.5rem;
+      font-size: 13px;
+    }
+
+    &--icon {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  &__dropdown-wrapper {
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
 
-  &__form {
+  &__dropdown {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
 
-    input {
-      width: 250px;
-      height: 38px;
-      background-color: $background-color-primary;
+    &--item {
+      background-color: $secondary-color-green;
+      border-radius: 20px;
+      color: $background-color-primary;
+      padding: 7px;
+      font-size: 13px;
+      border: none;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      display: block;
+      z-index: 1;
+      text-align: center;
     }
+    
   }
+
+
+
 
   &__button {
     color: #ffffff;
@@ -37,11 +101,11 @@
     border: none;
   }
 
-  &__top {
+  &__pages {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 2rem;
+    padding-top: 1rem;
   }
 
   &__btn {

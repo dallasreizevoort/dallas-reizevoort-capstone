@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Settings.scss';
-import DropDownArrow from "../../assets/images/Expand_Arrow.png";
+import SettingsIcon from '../../assets/images/Settings_Icon.png';
 
 function Settings() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,9 +23,8 @@ function Settings() {
 
   return (
     <div className="settings">
-      <h2 className="settings__title" onClick={toggleDropdown}>
-        Settings <img className="settings__icon" src={DropDownArrow} alt="expand arrow" />
-      </h2>
+      <img className="settings__icon" onClick={toggleDropdown} src={SettingsIcon} alt="settings" />
+      
       {isOpen && (
         <ul className="settings__dropdown">
           <li onClick={handleEmailOpt}>Toggle Email Opt-In/Out</li>

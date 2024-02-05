@@ -1,6 +1,6 @@
 .settings {
 
-    margin-right: 1.5rem;
+    margin-left: 1.5rem;
 
   &__title {
     font-size: 16px;
@@ -9,11 +9,14 @@
   }
 
   &__icon {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-self: flex-start;
   }
 
   &__dropdown {
+    position: absolute;
     list-style: none;
     display:flex;
     flex-direction: column;
@@ -21,8 +24,8 @@
     margin: 0;
 
     li {
-      padding: 10px;
-      font-family: 'Gotham', monospace;
+      font-size: 13px;
+      padding-top: 8px;
       cursor: pointer;
     }
 

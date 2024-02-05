@@ -4,7 +4,7 @@ import SpotifyPlayIcon from "../../assets/images/Spotify_Play.png";
 import SpotifyPlayer from "../SpotifyPlayer/SpotifyPlayer";
 import "./Tracks.scss";
 
-function Tracks({ accessToken, selectedTimeRange }) {
+function Tracks({ accessToken, selectedTimeRange, setSelectedTimeRange }) {
   console.log('Tracks component rendered');
   const [topTracks, setTopTracks] = useState([]);
   const [topTracksShort, setTopTracksShort] = useState([]);
@@ -23,6 +23,8 @@ function Tracks({ accessToken, selectedTimeRange }) {
     setPlayingTrackId(trackId);
   };
 
+
+  // trying async/await instead of callbacks.
   useEffect(() => {
     const fetchData = async () => {
       if (!accessToken) return;

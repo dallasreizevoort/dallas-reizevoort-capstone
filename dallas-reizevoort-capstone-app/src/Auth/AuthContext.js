@@ -3,6 +3,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+/*
+Currently using URLSearchParams to get code from URL. This is not secure and causes many issues 
+with routing/refresh.
+Need a better way to handle access/refresh token. local/session storage also has security risks.
+Maybe use HTTP-Only cookies? or store everything in server-side session.
+Will Update.
+*/
+
 const AuthContext = React.createContext();
 
 function AuthProvider({ children, code }) {

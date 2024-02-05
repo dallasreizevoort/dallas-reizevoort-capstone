@@ -1,24 +1,19 @@
 import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
-//Storing access token is bad for security.
-// Option 1: store in backend and make all requests on backend
-// Option 2: always have code in dashboard.js and make requests from there
-
-function RedirectHandler({ setCode }) {
+function RedirectHandler({ code }) {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // temporary fix
   useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
-    const code = urlParams.get("code");
-    if (code) {
-      setCode(code);
-      navigate("/dashboard");
+    if (code && !location.pathname.startsWith('/dashboard')) {
+      navigate(`/dashboard?code=${code}`, { replace: true });
+      navigate('/dashboard', { replace: true });
     }
-  }, [navigate, location.search, setCode]);
+  }, [navigate, code, location]);
 
-  return null; // This component does not need to render anything
+  return null; 
 }
 
 export default RedirectHandler;
