@@ -31,9 +31,6 @@ Customizable Time Periods:
 I want to select specific time periods (e.g., week, month, year) for my analytics.
 I want the app to dynamically update statistics based on my selected time period.
 
-Detailed Song Analytics:
-I want to view detailed information about my most played songs, including play count and release date.
-I want the option to explore additional details for each song, such as artist and album information.
 
 Album and Genre Insights:
 I want to see my top played albums and genres within the selected time period.
