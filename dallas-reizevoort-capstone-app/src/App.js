@@ -19,6 +19,10 @@ a "Compare to last visit" feature that will show updated song rankings.
 9. Optimze code for performance
 10. Test for more bugs.
 11. fix create playlist description.
+12. Add loading spinner and check for data before rendering.
+13. First created playlist save returns null. works on all subsequent saves. Fix.
+14. Remove defined but unused imports/variables.
+15. Fix Settings cog position.
 */
 
 function App() {
