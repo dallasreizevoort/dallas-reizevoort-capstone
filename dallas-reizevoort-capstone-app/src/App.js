@@ -23,6 +23,8 @@ a "Compare to last visit" feature that will show updated song rankings.
 13. First created playlist save returns null. works on all subsequent saves. Fix.
 14. Remove defined but unused imports/variables.
 15. Fix Settings cog position.
+16. ESLint Cache and .pack files not being ignored. Looked into it, possibly because of the 
+API wrapper.
 */
 
 function App() {
