@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Header from "./components/Header/Header";
-import Settings from "./components/Settings/Settings";
 import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import RedirectHandler from "./Auth/RedirectHandler";

@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
-import './Settings.scss';
-import SettingsIcon from '../../assets/images/Settings_Icon.png';
+import React, { useState } from "react";
+import "./Settings.scss";
+import SettingsIcon from "../../assets/images/settings_icon_green.png";
+import { useNavigate } from "react-router-dom";
 
-function Settings() {
+function Settings({ accessToken }) {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
-
-  
-
-  const handleEmailOpt = (e) => {
-    // handle email opt in/out
+  // need to add logout function
+  const handleLogout = () => {
+    navigate("/login");
   };
 
   const handleSpotifyRedirect = () => {
-  
-    window.location.href = 'https://open.spotify.com';
+    window.location.href = "https://open.spotify.com";
   };
 
   const toggleDropdown = () => {
@@ -23,13 +22,17 @@ function Settings() {
 
   return (
     <div className="settings">
-      <img className="settings__icon" onClick={toggleDropdown} src={SettingsIcon} alt="settings" />
-      
+      <img
+        className="settings__icon"
+        onClick={toggleDropdown}
+        src={SettingsIcon}
+        alt="settings"
+      />
+
       {isOpen && (
         <ul className="settings__dropdown">
-          <li onClick={handleEmailOpt}>Toggle Email Opt-In/Out</li>
           <li onClick={handleSpotifyRedirect}>Go to Spotify</li>
-          <li> Logout</li>
+          <li onClick={handleLogout}>Logout</li>
         </ul>
       )}
     </div>
@@ -37,4 +40,3 @@ function Settings() {
 }
 
 export default Settings;
-

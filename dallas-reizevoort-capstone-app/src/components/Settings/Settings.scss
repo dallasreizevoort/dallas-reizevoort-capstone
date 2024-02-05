@@ -1,10 +1,9 @@
 .settings {
-
-    margin-left: 1.5rem;
+  margin-left: 1.5rem;
 
   &__title {
     font-size: 16px;
-    font-family: 'Gotham', monospace;
+    font-family: "Gotham", monospace;
     cursor: pointer;
   }
 
@@ -18,7 +17,7 @@
   &__dropdown {
     position: absolute;
     list-style: none;
-    display:flex;
+    display: flex;
     flex-direction: column;
     padding: 0;
     margin: 0;

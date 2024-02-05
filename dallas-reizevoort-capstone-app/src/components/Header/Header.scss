@@ -2,15 +2,14 @@
 @use "../../styles/partials/mixins.scss" as *;
 @use "../../styles/partials/global.scss" as *;
 
-
 .header {
   display: flex;
   justify-content: space-between;
 
-  @include desktop{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include desktop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__wrapper {
@@ -53,8 +52,6 @@
 
       background-color: $background-color-primary;
     }
-
-    
   }
 
   &__container {
@@ -62,32 +59,30 @@
     flex-direction: column;
     justify-content: space-between;
     @include desktop {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    white-space: nowrap;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      white-space: nowrap;
     }
-
-    
 
     h1 {
       font-size: 21px;
       font-weight: $font-weight-bold;
       @include desktop {
-      font-size: 24px;
-      padding-right: 2rem;
+        font-size: 24px;
+        padding-right: 2rem;
       }
     }
 
     &--logo {
-    width: 24px;
-    height: 24px;
-    padding-right: 8px;
+      width: 24px;
+      height: 24px;
+      padding-right: 8px;
 
       @include desktop {
-      width: 50px;
-      height: 50px;
-      padding-right: 1rem;
+        width: 50px;
+        height: 50px;
+        padding-right: 1rem;
       }
     }
   }
@@ -97,11 +92,11 @@
     justify-content: space-between;
     align-items: center;
     @include desktop {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 60%;
-    margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 60%;
+      margin: auto;
     }
 
     &--list {
@@ -109,10 +104,10 @@
       display: flex;
       flex-wrap: wrap;
       @include desktop {
-      position: relative;
-      padding-right: 2.5rem;
-      text-align: center;
-      font-weight: $font-weight-regular;
+        position: relative;
+        padding-right: 2.5rem;
+        text-align: center;
+        font-weight: $font-weight-regular;
       }
     }
 

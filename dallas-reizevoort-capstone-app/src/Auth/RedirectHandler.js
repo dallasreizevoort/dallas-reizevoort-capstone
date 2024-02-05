@@ -7,13 +7,13 @@ function RedirectHandler({ code }) {
 
   // temporary fix
   useEffect(() => {
-    if (code && !location.pathname.startsWith('/dashboard')) {
+    if (code && !location.pathname.startsWith("/dashboard")) {
       navigate(`/dashboard?code=${code}`, { replace: true });
-      navigate('/dashboard', { replace: true });
+      navigate("/dashboard", { replace: true });
     }
   }, [navigate, code, location]);
 
-  return null; 
+  return null;
 }
 
 export default RedirectHandler;

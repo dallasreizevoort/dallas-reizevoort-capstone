@@ -1,32 +1,26 @@
-@use '../../styles/partials/variables.scss' as *;
-@use '../../styles/partials/global.scss' as *;
-
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/global.scss" as *;
 
 .genres {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    &__wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-bottom: 1rem;
-    }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1rem;
+  }
 }
 
-
 .genre {
-    display: flex;
-      align-items: center;
-      padding-right: 17rem;
+  &__rank {
+    padding-right: 0.5rem;
+  }
 
-
-      &__rank {
-        padding-right: 1rem;
-      }
-
-      &__title {
-        
-      }
+  &__title {
+    padding-bottom: 1rem;
+  }
 }

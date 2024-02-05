@@ -17,9 +17,11 @@ const scopes = [
 ];
 const clientId = process.env.REACT_APP_CLIENT_ID;
 const redirectUri = process.env.REACT_APP_REDIRECT_URI;
+// creating unique state parameter for security
 const state =
   Math.random().toString(36).substring(2, 15) +
   Math.random().toString(36).substring(2, 15);
+
 
 const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${encodeURIComponent(
   redirectUri
@@ -28,10 +30,6 @@ const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&r
 )}&state=${state}&show_dialog=true`;
 
 function Login() {
-  console.log('clientId:', clientId);
-  console.log('redirectUri:', redirectUri);
-  console.log('state:', state);
-  console.log('AUTH_URL:', AUTH_URL);
   return (
     <div className="login">
       <h1 className="login__header">SoundTrack Analyzer</h1>

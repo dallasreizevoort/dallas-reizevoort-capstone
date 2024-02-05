@@ -4,6 +4,7 @@
 
 .dashboard {
   padding: 2rem 1rem 1rem 1rem;
+  width: 100%;
   @include desktop {
     margin: 1.5rem;
     overflow: visible;
@@ -48,15 +49,14 @@
     justify-content: space-evenly;
     padding-top: 4rem;
     padding-bottom: 2rem;
+  }
 
-    &--list {
-      margin-top: 0.5rem;
-      font-size: 13px;
-    }
+  &__nav-list {
+    margin-top: 0.5rem;
+    font-size: 13px;
 
-    &--icon {
-      width: 10px;
-      height: 10px;
+    &--arrow {
+      color: $secondary-color-green;
     }
   }
 
@@ -84,11 +84,7 @@
       z-index: 1;
       text-align: center;
     }
-    
   }
-
-
-
 
   &__button {
     color: #ffffff;
@@ -102,6 +98,7 @@
   }
 
   &__pages {
+    width: 95%;
     display: flex;
     justify-content: center;
     align-items: center;

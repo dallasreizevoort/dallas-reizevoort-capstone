@@ -1,13 +1,14 @@
-import './Footer.scss';
+import "./Footer.scss";
 
-
-function Footer () {
-    return (
-        <footer className="footer">
-            <p className="footer__copyright">© 2024 SoundTrack Analyzer</p>
-            <p className="footer__about">We are not related to Spotify or its partners in any way.</p>
-        </footer>
-    )
+function Footer() {
+  return (
+    <footer className="footer">
+      <p className="footer__copyright">© 2024 SoundTrack Analyzer</p>
+      <p className="footer__about">
+        We are not related to Spotify or its partners in any way.
+      </p>
+    </footer>
+  );
 }
 
 export default Footer;

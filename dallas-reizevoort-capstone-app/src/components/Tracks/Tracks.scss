@@ -16,8 +16,6 @@
   align-items: center;
   width: 40%;
 
-  
-
   &__container {
     display: flex;
     align-items: center;
@@ -50,5 +48,9 @@
   &__icon {
     width: 24px;
     height: 24px;
+  }
+
+  &__link {
+    width: 10%;
   }
 }

@@ -5,7 +5,7 @@ import SpotifyPlayer from "../SpotifyPlayer/SpotifyPlayer";
 import "./Tracks.scss";
 
 function Tracks({ accessToken, selectedTimeRange, setSelectedTimeRange }) {
-  console.log('Tracks component rendered');
+  console.log("Tracks component rendered");
   const [topTracks, setTopTracks] = useState([]);
   const [topTracksShort, setTopTracksShort] = useState([]);
   const [topTracksMedium, setTopTracksMedium] = useState([]);
@@ -14,15 +14,14 @@ function Tracks({ accessToken, selectedTimeRange, setSelectedTimeRange }) {
 
   const spotifyApi = useRef(
     new spotifyWebApi({
-      clientId: "6ba0cc8b29e145ea99f2401c09a35e6e",
+      clientId: process.env.REACT_APP_CLIENT_ID,
     })
   );
 
   const handlePlay = (trackId) => {
-    console.log("Playing track with ID:", trackId); // Add this line
+    console.log("Playing track with ID:", trackId);
     setPlayingTrackId(trackId);
   };
-
 
   // trying async/await instead of callbacks.
   useEffect(() => {
@@ -30,27 +29,43 @@ function Tracks({ accessToken, selectedTimeRange, setSelectedTimeRange }) {
       if (!accessToken) return;
       spotifyApi.current.setAccessToken(accessToken);
 
-      const { body: { items: topTracks } } = await spotifyApi.current.getMyTopTracks({ limit: 50 });
-      console.log('Top Tracks:', topTracks); // Add this line
+      const {
+        body: { items: topTracks },
+      } = await spotifyApi.current.getMyTopTracks({ limit: 50 });
+      console.log("Top Tracks:", topTracks);
       setTopTracks(topTracks);
 
-      const { body: { items: topTracksShort } } = await spotifyApi.current.getMyTopTracks({ time_range: "short_term", limit: 50 });
-      console.log('Short Term Top Tracks:', topTracksShort); // Add this line
+      const {
+        body: { items: topTracksShort },
+      } = await spotifyApi.current.getMyTopTracks({
+        time_range: "short_term",
+        limit: 50,
+      });
+      console.log("Short Term Top Tracks:", topTracksShort);
       setTopTracksShort(topTracksShort);
 
-      const { body: { items: topTracksMedium } } = await spotifyApi.current.getMyTopTracks({ time_range: "medium_term", limit: 50 });
-      console.log('Medium Term Top Tracks:', topTracksMedium); // Add this line
+      const {
+        body: { items: topTracksMedium },
+      } = await spotifyApi.current.getMyTopTracks({
+        time_range: "medium_term",
+        limit: 50,
+      });
+      console.log("Medium Term Top Tracks:", topTracksMedium);
       setTopTracksMedium(topTracksMedium);
 
-      const { body: { items: topTracksLong } } = await spotifyApi.current.getMyTopTracks({ time_range: "long_term", limit: 50 });
-      console.log('Long Term Top Tracks:', topTracksLong); // Add this line
+      const {
+        body: { items: topTracksLong },
+      } = await spotifyApi.current.getMyTopTracks({
+        time_range: "long_term",
+        limit: 50,
+      });
+      console.log("Long Term Top Tracks:", topTracksLong);
       setTopTracksLong(topTracksLong);
     };
 
     fetchData();
   }, [accessToken]);
 
-  // Render your tracks here
   return (
     <div className="tracks">
       {playingTrackId && <SpotifyPlayer trackId={playingTrackId} />}
@@ -72,7 +87,10 @@ function Tracks({ accessToken, selectedTimeRange, setSelectedTimeRange }) {
               </span>
             </div>
             <div className="track__link">
-              <button className="track__button" onClick={() => handlePlay(track.id)}>
+              <button
+                className="track__button"
+                onClick={() => handlePlay(track.id)}
+              >
                 <img
                   src={SpotifyPlayIcon}
                   alt="Spotify Play Icon"
@@ -100,7 +118,10 @@ function Tracks({ accessToken, selectedTimeRange, setSelectedTimeRange }) {
               </span>
             </div>
             <div className="track__link">
-              <button className="track__button" onClick={() => handlePlay(track.id)}>
+              <button
+                className="track__button"
+                onClick={() => handlePlay(track.id)}
+              >
                 <img
                   src={SpotifyPlayIcon}
                   alt="Spotify Play Icon"
@@ -128,7 +149,10 @@ function Tracks({ accessToken, selectedTimeRange, setSelectedTimeRange }) {
               </span>
             </div>
             <div className="track__link">
-              <button className="track__button" onClick={() => handlePlay(track.id)}>
+              <button
+                className="track__button"
+                onClick={() => handlePlay(track.id)}
+              >
                 <img
                   src={SpotifyPlayIcon}
                   alt="Spotify Play Icon"

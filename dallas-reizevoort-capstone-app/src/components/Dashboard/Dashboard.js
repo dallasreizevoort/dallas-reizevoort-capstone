@@ -9,10 +9,7 @@ import RecentlyPlayed from "../RecentlyPlayed/RecentlyPlayed";
 import Header from "../Header/Header";
 import Playlist from "../Playlist/Playlist";
 import Mood from "../Mood/Mood";
-import Settings from "../Settings/Settings";
 import { Link } from "react-router-dom";
-import HeaderLogo from "../../assets/images/sound-waves.png";
-import ExpandArrow from "../../assets/images/Expand_Arrow.png";
 import UserMood from "../../assets/images/user_mood.png";
 import UserPlaylist from "../../assets/images/add_playlist.png";
 import UserStats from "../../assets/images/user_stats.png";
@@ -25,6 +22,7 @@ function Dashboard() {
   const [selectedTimeRange, setSelectedTimeRange] = useState("short_term");
   const location = useLocation();
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [isStatsOptionSelected, setIsStatsOptionSelected] = useState(false);
 
   const toggleDropdown = () => {
     setDropdownVisible(!isDropdownVisible);
@@ -32,64 +30,68 @@ function Dashboard() {
 
   const handleStatsOptionClick = (option) => {
     setIsStatsOptionSelected(true);
-    setSelectedTimeRange(option); // Reset the time range when a new option is clicked
+    setSelectedTimeRange(option);
   };
-
-  const [isStatsOptionSelected, setIsStatsOptionSelected] = useState(false);
 
   return (
     <div className="dashboard">
       <Header accessToken={accessToken} />
       <div className="dashboard__nav">
-      <div className="dashboard__icons--container">
-      <ul className="dashboard__dropdown-wrapper" onClick={toggleDropdown}>
-          <img className="dashboard__icons" src={UserStats} alt="user stats" />
-          <li className="dashboard__nav--list">Stats &#x25BE; </li>
-
-          {isDropdownVisible && (
-            <ul className={`dropdown ${isDropdownVisible ? 'active' : ''}`}>
-              <Link
-                to="/dashboard/tracks"
-                onClick={() => handleStatsOptionClick("short_term")}
-              >
-                <li className="dashboard__dropdown--item">Top Tracks</li>
-              </Link>
-              <Link
-                to="/dashboard/artists"
-                onClick={() => handleStatsOptionClick("medium_term")}
-              >
-                <li className="dashboard__dropdown--item">Top Artists</li>
-              </Link>
-              <Link
-                to="/dashboard/genres"
-                onClick={() => handleStatsOptionClick("long_term")}
-              >
-                <li className="dashboard__dropdown--item">Top Genres</li>
-              </Link>
-              <Link to="/dashboard/recent">
-                <li className="dashboard__dropdown--item">Recently Played</li>
-              </Link>
-            </ul>
-          )}
-        </ul>
-      </div>
-
-      <Link to="/dashboard/mood">
         <div className="dashboard__icons--container">
-          <img className="dashboard__icons" src={UserMood} alt="user mood" />
-          <li className="dashboard__nav--list"> Your Mood</li>
+          <ul className="dashboard__dropdown-wrapper" onClick={toggleDropdown}>
+            <img
+              className="dashboard__icons"
+              src={UserStats}
+              alt="user stats"
+            />
+            <li className="dashboard__nav-list">
+              Stats <span className="dashboard__nav-list--arrow">&#x25BE;</span>{" "}
+            </li>
+
+            {isDropdownVisible && (
+              <ul className={`dropdown ${isDropdownVisible ? "active" : ""}`}>
+                <Link
+                  to="/dashboard/tracks"
+                  onClick={() => handleStatsOptionClick("short_term")}
+                >
+                  <li className="dashboard__dropdown--item">Top Tracks</li>
+                </Link>
+                <Link
+                  to="/dashboard/artists"
+                  onClick={() => handleStatsOptionClick("medium_term")}
+                >
+                  <li className="dashboard__dropdown--item">Top Artists</li>
+                </Link>
+                <Link
+                  to="/dashboard/genres"
+                  onClick={() => handleStatsOptionClick("long_term")}
+                >
+                  <li className="dashboard__dropdown--item">Top Genres</li>
+                </Link>
+                <Link to="/dashboard/recent">
+                  <li className="dashboard__dropdown--item">Recently Played</li>
+                </Link>
+              </ul>
+            )}
+          </ul>
         </div>
-      </Link>
-      <Link to="/dashboard/playlist">
-        <div className="dashboard__icons--container">
-          <img
-            className="dashboard__icons"
-            src={UserPlaylist}
-            alt="user playlist"
-          />
-          <li className="dashboard__nav--list">Create a Playlist</li>
-        </div>
-      </Link>
+
+        <Link to="/dashboard/mood">
+          <div className="dashboard__icons--container">
+            <img className="dashboard__icons" src={UserMood} alt="user mood" />
+            <li className="dashboard__nav-list"> Your Mood</li>
+          </div>
+        </Link>
+        <Link to="/dashboard/playlist">
+          <div className="dashboard__icons--container">
+            <img
+              className="dashboard__icons"
+              src={UserPlaylist}
+              alt="user playlist"
+            />
+            <li className="dashboard__nav-list">Create a Playlist</li>
+          </div>
+        </Link>
       </div>
 
       {[

@@ -10,12 +10,12 @@ function RecentlyPlayed({ accessToken }) {
 
   const spotifyApi = useRef(
     new spotifyWebApi({
-      clientId: "6ba0cc8b29e145ea99f2401c09a35e6e",
+      clientId: process.env.REACT_APP_CLIENT_ID,
     })
   );
 
   const handlePlay = (trackId) => {
-    console.log("Playing track with ID:", trackId); // Add this line
+    console.log("Playing track with ID:", trackId); 
     setPlayingTrackId(trackId);
   };
 
@@ -30,34 +30,40 @@ function RecentlyPlayed({ accessToken }) {
 
   return (
     <div className="recents">
-    {playingTrackId && <SpotifyPlayer trackId={playingTrackId} />}
-    {recentlyPlayed.map((track, index) => (
-      <div key={index} className="recents__wrapper">
-        <div className="recent__container">
-          <span className="recent__rank">{index + 1}</span>
-          <img
-            src={track.track.album.images[0].url}
-            alt={track.track.name}
-            className="recent__image"
-          />
-          <span className="recent__title">{track.track.name}</span>
-          </div>
-        <div className="recent__container">
-          <span className="recent__artist"> {track.track.artists.map((artist) => artist.name).join(", ")}</span>
-          </div>
-        <div className="recent__link">
-          <button className="recent__button" onClick={() => handlePlay(track.id)}>
+      {playingTrackId && <SpotifyPlayer trackId={playingTrackId} />}
+      {recentlyPlayed.map((track, index) => (
+        <div key={index} className="recents__wrapper">
+          <div className="recent__container">
+            <span className="recent__rank">{index + 1}</span>
             <img
-              src={SpotifyIcon}
-              alt="Spotify Play Icon"
-              className="recent__icon"
+              src={track.track.album.images[0].url}
+              alt={track.track.name}
+              className="recent__image"
             />
-          </button>
+            <span className="recent__title">{track.track.name}</span>
+          </div>
+          <div className="recent__container">
+            <span className="recent__artist">
+              {" "}
+              {track.track.artists.map((artist) => artist.name).join(", ")}
+            </span>
+          </div>
+          <div className="recent__link">
+            <button
+              className="recent__button"
+              onClick={() => handlePlay(track.id)}
+            >
+              <img
+                src={SpotifyIcon}
+                alt="Spotify Play Icon"
+                className="recent__icon"
+              />
+            </button>
+          </div>
         </div>
-        
-      </div>
-    ))}
-  </div>
-  )};
+      ))}
+    </div>
+  );
+}
 
 export default RecentlyPlayed;
