@@ -22,7 +22,11 @@ function Header({ accessToken }) {
         setUserName(data.body.display_name);
 
         if (data.body.images.length > 0) {
-          setUserPhoto(data.body.images[0].url);
+          const sortedImages = data.body.images.sort(
+            (a, b) => b.width - a.width
+          );
+          setUserPhoto(sortedImages[0].url);
+          console.log(sortedImages);
         }
       })
       .catch((err) => {
@@ -35,10 +39,9 @@ function Header({ accessToken }) {
       <div className="header__container">
         <div className="header__wrapper">
           <Link to="/login">
-            <img
+            <div
               className="header__avatar"
-              src={userPhoto}
-              alt="User profile"
+              style={{ backgroundImage: `url(${userPhoto})` }}
             />
           </Link>
           <div className="header__container">
@@ -50,7 +53,7 @@ function Header({ accessToken }) {
         </div>
       </div>
     </div>
-  );
+  );  
 }
 
 export default Header;

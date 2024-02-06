@@ -1,6 +1,7 @@
 import React from "react";
 import SpotifyIcon from "../../assets/images/Spotify_Icon_RGB_Green.png";
 import "./Login.scss";
+import { motion } from "framer-motion"
 
 const scopes = [
   "user-top-read",

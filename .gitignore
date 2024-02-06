@@ -1,5 +1,8 @@
 # dependencies
 /node_modules
+dallas-reizevoort-capstone-app/node_modules
+dallas-reizevoort-capstone-api/node_modules
+.eslintcache
 
 # testing
 /coverage
