@@ -28,6 +28,10 @@ function Dashboard() {
     setDropdownVisible(!isDropdownVisible);
   };
 
+  const hideDropdown = () => {
+    setDropdownVisible(false);
+  };
+
   const handleStatsOptionClick = (option) => {
     setIsStatsOptionSelected(true);
     setSelectedTimeRange(option);
@@ -36,6 +40,7 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <Header accessToken={accessToken} />
+      <div className="dashboard__content">
       <div className="dashboard__nav">
         <div className="dashboard__icons--container">
           <ul className="dashboard__dropdown-wrapper" onClick={toggleDropdown}>
@@ -76,20 +81,20 @@ function Dashboard() {
           </ul>
         </div>
 
-        <Link to="/dashboard/mood">
+        <Link to="/dashboard/mood" onClick={hideDropdown}>
           <div className="dashboard__icons--container">
             <img className="dashboard__icons" src={UserMood} alt="user mood" />
             <li className="dashboard__nav-list"> Your Mood</li>
           </div>
         </Link>
-        <Link to="/dashboard/playlist">
+        <Link to="/dashboard/playlist" onClick={hideDropdown}>
           <div className="dashboard__icons--container">
             <img
               className="dashboard__icons"
               src={UserPlaylist}
               alt="user playlist"
             />
-            <li className="dashboard__nav-list">Create a Playlist</li>
+            <li className="dashboard__nav-list" onClick={hideDropdown}>Create a Playlist</li>
           </div>
         </Link>
       </div>
@@ -126,7 +131,7 @@ function Dashboard() {
           </button>
         </div>
       )}
-
+      
       <div className="dashboard__pages">
         <Routes>
           <Route
@@ -171,6 +176,7 @@ function Dashboard() {
         </Routes>
       </div>
       <Footer />
+      </div>
     </div>
   );
 }

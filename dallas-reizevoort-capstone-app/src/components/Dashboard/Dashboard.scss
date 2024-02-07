@@ -5,8 +5,8 @@
 .dashboard {
   padding: 2rem 1rem 1rem 1rem;
   width: 100%;
-  @include desktop {
-    margin: 1.5rem;
+  @include tablet {
+    padding: 2.5rem;
     overflow: visible;
   }
 
@@ -16,44 +16,83 @@
     justify-content: center;
   }
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   &__btn-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    @include tablet {
+      display: flex;
+      align-items: center;
+      gap: 200px;
+    }
   }
 
   &__selected-btn {
     border: none;
     background-color: transparent;
     padding: 2rem 0rem 2rem 0rem;
+    @include tablet {
+      font-size: 16px;
+      min-width: 150px;
+      text-align: center;
+    }
   }
 
   &__icons {
     width: 50px;
     height: 50px;
+    @include tablet {
+      width: 100px;
+      height: 100px;
+    }
 
     &--container {
       display: flex;
       flex-direction: column;
       align-items: center;
+      @include tablet {
+        width: 150px;
+      }
     }
   }
 
   &__selected-btn.active {
     border-bottom: 2px solid $secondary-color-green;
+    @include tablet {
+      min-width: 150px;
+      text-align: center;
+    }
   }
 
   &__nav {
     display: flex;
-    align-items: center;
     justify-content: space-evenly;
     padding-top: 4rem;
     padding-bottom: 2rem;
+    @include tablet {
+      display: flex;
+      gap: 200px;
+      padding-bottom: 5rem;
+      padding-top: 8rem;
+    }
   }
 
   &__nav-list {
     margin-top: 0.5rem;
     font-size: 13px;
+    @include tablet {
+      margin-top: 1rem;
+      font-size: 18px;
+      min-width: 150px;
+      text-align: center;
+    }
 
     &--arrow {
       color: $secondary-color-green;
@@ -72,9 +111,10 @@
     align-items: center;
 
     &--item {
-      background-color: $secondary-color-green;
+      background-color: #242424;
+      transition: background-color 0.3s ease;
       border-radius: 20px;
-      color: $background-color-primary;
+      color: #ffffff;
       padding: 7px;
       font-size: 13px;
       border: none;
@@ -83,6 +123,16 @@
       display: block;
       z-index: 1;
       text-align: center;
+      text-wrap: nowrap;
+
+      &:hover {
+        background-color: $secondary-color-green;
+        cursor: pointer;
+      }
+      @include tablet {
+        padding: 14px;
+        font-size: 16px;
+      }
     }
   }
 
@@ -103,6 +153,10 @@
     justify-content: center;
     align-items: center;
     padding-top: 1rem;
+    @include tablet {
+      width: 100%;
+      padding-top: 2rem;
+    }
   }
 
   &__btn {

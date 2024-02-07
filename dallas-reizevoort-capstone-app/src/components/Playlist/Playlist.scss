@@ -1,10 +1,14 @@
 @use "../../styles/partials/variables.scss" as *;
 @use "../../styles/partials/global.scss" as *;
+@use '../../styles/partials/mixins.scss' as *;
 
 .playlists {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @include tablet {
+    width: 72%;
+  }
 
   &__wrapper {
     display: flex;
@@ -17,6 +21,9 @@
     justify-content: center;
     padding-bottom: 2rem;
     text-align: center;
+    @include tablet {
+      font-size: 41px;
+    }
   }
 
   &__button {
@@ -27,6 +34,9 @@
     justify-content: left;
     font-size: 20px;
     margin-bottom: 2rem;
+    @include tablet {
+      font-size: 24px;
+    }
   }
 
   &__create {
@@ -58,10 +68,17 @@
     resize: none;
     border: none;
     background-color: #242424;
+    @include tablet {
+      width: 250px;
+      padding: 15px;
+    }
 
     &::placeholder {
       color: $background-color-secondary;
       font-size: 14px;
+      @include tablet {
+        font-size: 16px;
+      }
     }
 
     &:focus {
@@ -77,20 +94,35 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: 1rem;
+  @include tablet {
+    gap: 125px;
+  }
 
   &__container {
     display: flex;
     align-items: center;
+    width: 40%;
+
+    &--link {
+      width: 10%;
+    }
   }
 
   &__title {
     font-size: 13px;
     padding-left: 1rem;
+    @include tablet {
+      font-size: 16px;
+    }
   }
 
   &__artist {
     font-size: 13px;
     padding-right: 1rem;
+    width: 40%;
+    @include tablet {
+      font-size: 16px;
+    }
   }
 
   &__image {
@@ -109,5 +141,9 @@
   &__icon {
     width: 24px;
     height: 24px;
+    @include tablet {
+      width: 30px;
+      height: 30px;
+    }
   }
 }

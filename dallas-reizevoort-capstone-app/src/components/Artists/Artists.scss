@@ -1,10 +1,24 @@
 @use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
 @use "../../styles/partials/global.scss" as *;
+
+.artists__container {
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+  }
+}
 
 .artists {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
   &__selected {
     display: flex;
@@ -25,25 +39,66 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: 2rem;
+  @include tablet {
+    padding-bottom: 3rem;
+    width: 33%;
+  }
 
   &__container {
     display: flex;
     align-items: center;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* This will give a 1:1 aspect ratio. Adjust as needed. */
+    overflow: hidden;
+
+    &__container-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &-text {
+      display: flex;
+      justify-content: space-evenly;
+      min-width: 300px;
+      align-items: center;
+      margin-top: 1rem; 
+    }
   }
 
   &__rank {
     padding-right: 1rem;
     font-size: 13px;
+    @include tablet {
+      display: none;
+    }
+
+    &--tablet-desktop {
+      margin-right: 8px;
+      font-size: 21px;
+    }
   }
 
   &__image {
     width: 150px;
     height: 150px;
     margin-bottom: 0.5rem;
+    @include tablet {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+    }
   }
 
   &__title {
     font-size: 16px;
+    @include tablet {
+      font-size: 21px;
+    }
   }
 
   &__link {
@@ -55,5 +110,9 @@
   &__icon {
     width: 24px;
     height: 24px;
+    @include tablet {
+      width: 38px;
+      height: 38px;
+    }
   }
 }

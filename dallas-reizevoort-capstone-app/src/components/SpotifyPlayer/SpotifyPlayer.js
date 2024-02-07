@@ -1,13 +1,16 @@
 import React from "react";
 import "./SpotifyPlayer.scss";
 
-function SpotifyPlayer({ trackId }) {
+function SpotifyPlayer({ trackId, onClose }) {
+  if (!trackId) {
+    return null;
+  }
+
   return (
     <div className="spotify-player">
+       <button className="spotify-player__close-button" onClick={onClose}>X</button>
       <iframe
         src={`https://open.spotify.com/embed/track/${trackId}?theme=white&view=list`}
-        width="300"
-        height="150"
         frameborder="0"
         allowtransparency="true"
         allow="encrypted-media"

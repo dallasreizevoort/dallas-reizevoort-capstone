@@ -6,9 +6,11 @@
   display: flex;
   justify-content: space-between;
 
-  @include desktop {
+  @include tablet {
     display: flex;
-    align-items: center;
+    width: 90%;
+    margin:auto;
+    margin-bottom: 6px;
   }
 
   &__wrapper {
@@ -24,9 +26,9 @@
     border-radius: 40px;
     margin-right: 6px;
 
-    @include desktop {
-      width: 80px;
-      height: 80px;
+    @include tablet {
+      width: 60px;
+      height: 60px;
     }
   }
 
@@ -34,10 +36,18 @@
     font-size: 14px;
     font-weight: $font-weight-bold;
     padding-bottom: 4px;
+
+    @include tablet {
+      font-size: 21px;
+    }
   }
 
   &__text {
     font-size: 13px;
+
+    @include tablet {
+      font-size: 16px;
+    }
   }
 
   &__dropdown {
@@ -66,9 +76,8 @@
     justify-content: space-between;
     @include desktop {
       display: flex;
-      flex-direction: row;
-      align-items: center;
       white-space: nowrap;
+      margin-left: 0.75rem;
     }
 
     h1 {

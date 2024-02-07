@@ -1,18 +1,32 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-node";
 import { Chart } from "react-google-charts";
 import "./Mood.scss";
 
 function Mood({ accessToken }) {
-  const spotifyApi = useRef(
-    new SpotifyWebApi({
-      clientId: process.env.REACT_APP_CLIENT_ID,
-    })
-  );
+  const spotifyApi = useRef(new SpotifyWebApi({
+    clientId: process.env.REACT_APP_CLIENT_ID,
+  }));
 
-  const [moodData, setMoodData] = React.useState([]);
+  const [moodData, setMoodData] = useState([]);
+  const [chartSize, setChartSize] = useState({ width: '600px', height: '300px' });
+  const [fontSize, setFontSize] = useState(13);
 
   useEffect(() => {
+    if (window.innerWidth <= 768) {
+      setChartSize({ width: '100%', height: '200px' });
+      setFontSize(10);
+    } else if (window.innerWidth > 768 && window.innerWidth <= 1200) {
+      setChartSize({ width: '600px', height: '300px' });
+      setFontSize(14);
+    } else {
+      setChartSize({ width: '900px', height: '500px' });
+      setFontSize(18);
+    }
+  }, []);
+
+  useEffect(() => {
+    
     if (!accessToken) return;
     spotifyApi.current.setAccessToken(accessToken);
     spotifyApi.current
@@ -46,6 +60,8 @@ function Mood({ accessToken }) {
       });
   }, [accessToken]);
 
+  
+
   return (
     <div className="mood">
       <h1 className="mood__title">How happy or sad is your music?</h1>
@@ -70,15 +86,15 @@ function Mood({ accessToken }) {
           Mood (valence)
         </div>
         <Chart
-          width={"500px"}
-          height={"300px"}
+          width={chartSize.width}
+          height={chartSize.height}
           chartType="LineChart"
           loader={<div>Loading Chart</div>}
           data={moodData}
           options={{
             backgroundColor: "#191414",
             fontName: "Gotham",
-            fontSize: 13,
+            fontSize: fontSize,
             hAxis: {
               title: "Days",
               format: "MMM dd",

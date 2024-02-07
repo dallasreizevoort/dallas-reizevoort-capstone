@@ -49,9 +49,10 @@ function Header({ accessToken }) {
 
             <p className="header__text">Let's explore your music</p>
           </div>
-          <Settings accessToken={accessToken} />
+          
         </div>
       </div>
+      <Settings accessToken={accessToken} />
     </div>
   );  
 }

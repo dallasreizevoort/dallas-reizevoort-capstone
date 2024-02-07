@@ -30,7 +30,7 @@ function RecentlyPlayed({ accessToken }) {
 
   return (
     <div className="recents">
-      {playingTrackId && <SpotifyPlayer trackId={playingTrackId} />}
+      {playingTrackId && <SpotifyPlayer trackId={playingTrackId} onClose={() => setPlayingTrackId(null)}/>}
       {recentlyPlayed.map((track, index) => (
         <div key={index} className="recents__wrapper">
           <div className="recent__container">
@@ -51,7 +51,7 @@ function RecentlyPlayed({ accessToken }) {
           <div className="recent__link">
             <button
               className="recent__button"
-              onClick={() => handlePlay(track.id)}
+              onClick={() => handlePlay(track.track.id)}
             >
               <img
                 src={SpotifyIcon}

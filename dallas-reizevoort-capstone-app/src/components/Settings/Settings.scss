@@ -1,5 +1,13 @@
+@use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/global.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+
+
 .settings {
-  margin-left: 1.5rem;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 
   &__title {
     font-size: 16px;
@@ -10,26 +18,36 @@
   &__icon {
     width: 18px;
     height: 18px;
-    display: flex;
-    align-self: flex-start;
+    @include tablet {
+      width: 25px;
+      height: 25px;
+    }
   }
 
   &__dropdown {
-    position: absolute;
-    list-style: none;
     display: flex;
     flex-direction: column;
-    padding: 0;
-    margin: 0;
 
     li {
       font-size: 13px;
-      padding-top: 8px;
+      padding: 8px;
+      background-color: #242424;
+      transition: background-color 0.3s ease;
+      border-radius: 20px;
+      color: #ffffff;
+      border: none;
       cursor: pointer;
-    }
+      margin-top: 0.5rem;
+      text-wrap: nowrap;
+      @include tablet {
+        font-size: 16px;
+        padding: 14px;
 
-    .settings__dropdown li:hover {
-      background-color: #f0f0f0;
+        &:hover {
+          background-color: $secondary-color-green;
+          cursor: pointer;
+        }
+      }
     }
   }
 }

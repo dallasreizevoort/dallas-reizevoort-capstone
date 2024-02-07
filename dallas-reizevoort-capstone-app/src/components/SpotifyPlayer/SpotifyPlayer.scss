@@ -1,5 +1,33 @@
+@use '../../styles/partials/variables.scss' as *;
+@use '../../styles/partials/mixins.scss' as *;
+@use '../../styles/partials/global.scss' as *;
+
 .spotify-player {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 2rem 0;
+
+  &__close-button {
+    color: #FFFFFF;
+    font-weight: bold;
+    position: relative;
+    top: -105px;
+    right: -16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1;
+  }
+}
+
+
+.spotify-player iframe {
+ width: 300px;
+ height: 150px;
+ @include tablet {
+  width: 500px;
+  height: 175px;
+ }
 }

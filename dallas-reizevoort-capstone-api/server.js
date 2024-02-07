@@ -43,7 +43,6 @@ app.post("/login", (req, res) => {
   spotifyApi
     .authorizationCodeGrant(code)
     .then((data) => {
-      console.log("Scopes:", data.body.scope);
       res.json({
         accessToken: data.body.access_token,
         refreshToken: data.body.refresh_token,

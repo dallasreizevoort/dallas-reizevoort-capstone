@@ -36,8 +36,9 @@ function Artists({ accessToken, selectedTimeRange }) {
   }, [accessToken]);
 
   return (
+    <div className="artists__container">
     <div className="artists">
-      {selectedTimeRange === "short_term" &&
+    {selectedTimeRange === "short_term" &&
         topArtistsShort.map((artist, index) => (
           <div key={index} className="artist">
             <div className="artist__container">
@@ -48,8 +49,11 @@ function Artists({ accessToken, selectedTimeRange }) {
                 className="artist__image"
               />
             </div>
-            <div className="artist__container">
+            <div className="artist__container-text">
+              <div>
+            <span className="artist__rank--tablet-desktop">{index + 1}.</span>
               <span className="artist__title">{artist.name}</span>
+              </div>
               <div className="artist__link">
                 <a
                   href={artist.external_urls.spotify}
@@ -78,8 +82,11 @@ function Artists({ accessToken, selectedTimeRange }) {
                 className="artist__image"
               />
             </div>
-            <div className="artist__container">
+            <div className="artist__container-text">
+              <div>
+            <span className="artist__rank--tablet-desktop">{index + 1}.</span>
               <span className="artist__title">{artist.name}</span>
+              </div>
               <div className="artist__link">
                 <a
                   href={artist.external_urls.spotify}
@@ -108,8 +115,11 @@ function Artists({ accessToken, selectedTimeRange }) {
                 className="artist__image"
               />
             </div>
-            <div className="artist__container">
+            <div className="artist__container-text">
+              <div>
+            <span className="artist__rank--tablet-desktop">{index + 1}.</span>
               <span className="artist__title">{artist.name}</span>
+              </div>
               <div className="artist__link">
                 <a
                   href={artist.external_urls.spotify}
@@ -127,6 +137,7 @@ function Artists({ accessToken, selectedTimeRange }) {
             </div>
           </div>
         ))}
+    </div>
     </div>
   );
 }

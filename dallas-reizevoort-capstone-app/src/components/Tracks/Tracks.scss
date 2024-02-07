@@ -1,13 +1,23 @@
 @use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
 @use "../../styles/partials/global.scss" as *;
 
 .tracks {
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   &__wrapper {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-bottom: 1rem;
+    @include tablet {
+      padding-bottom: 1.25rem;
+      gap: 100px;
+    }
   }
 }
 
@@ -15,6 +25,7 @@
   display: flex;
   align-items: center;
   width: 40%;
+ 
 
   &__container {
     display: flex;
@@ -24,20 +35,33 @@
 
   &__rank {
     padding-right: 0.5rem;
+    @include tablet {
+      font-size: 16px;
+    }
   }
 
   &__image {
     width: 42px;
     height: 42px;
+    @include tablet {
+      width: 50px;
+      height: 50px;
+    }
   }
 
   &__title {
     font-size: 13px;
     padding-left: 0.5rem;
+    @include tablet {
+      font-size: 16px;
+    }
   }
 
   &__artist {
     font-size: 13px;
+    @include tablet {
+      font-size: 16px;
+    }
   }
 
   &__button {
@@ -48,9 +72,17 @@
   &__icon {
     width: 24px;
     height: 24px;
+    @include tablet {
+    width: 30px;
+    height: 30px;
+    }
   }
 
   &__link {
     width: 10%;
+    @include tablet {
+      width: 20%;
+      text-align: center;
+    }
   }
 }
