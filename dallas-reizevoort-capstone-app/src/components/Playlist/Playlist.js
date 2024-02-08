@@ -1,16 +1,17 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import SpotifyWebApi from "spotify-web-api-node";
-import SpotifyPlayIcon from "../../assets/images/Spotify_Play.png";
 import SpotifyPlayer from "../SpotifyPlayer/SpotifyPlayer";
 import { useLocation } from "react-router-dom";
 import "./Playlist.scss";
+import SpotifyPlayIcon from "../../assets/images/Spotify_Play.png";
 import Create from "../../assets/images/create_icon.png";
 import Save from "../../assets/images/save_icon.png";
-import axios from "axios";
+import Refresh from "../../assets/images/icons8-refresh-90.png";
 
 function Playlist({ accessToken }) {
   const [userID, setUserID] = useState();
-  const [playlist, setPlaylist] = useState(null); 
+  const [playlist, setPlaylist] = useState(null);
   const [newPlaylist, setNewPlaylist] = useState(null);
   const [playlistDescription, setPlaylistDescription] = useState("");
   const [playingTrackId, setPlayingTrackId] = useState(null);
@@ -52,15 +53,25 @@ function Playlist({ accessToken }) {
     });
   }, [accessToken]);
 
+  useEffect(() => {
+    console.log(
+      "playlistId or playlistCreated changed:",
+      playlistId,
+      playlistCreated
+    );
+  }, [playlistId, playlistCreated]);
+
   const createPlaylist = async () => {
     try {
       const topTracksResponse = await spotifyApi.current.getMyTopTracks({
-        limit: 5,
+        limit: 20,
+        time_range: "medium_term"
       });
       const trackIds = topTracksResponse.body.items.map((track) => track.id);
+      const seedTracks = trackIds.slice(0, 5);
 
       const recommendationsResponse =
-        await spotifyApi.current.getRecommendations({ seed_tracks: trackIds });
+        await spotifyApi.current.getRecommendations({ seed_tracks: seedTracks });
       const tracks = recommendationsResponse.body.tracks.map((track) => ({
         uri: track.uri,
         name: track.name,
@@ -77,16 +88,9 @@ function Playlist({ accessToken }) {
   };
 
   // Had to use axios to make the post. spotifyApi library was giving me problems here.
-  const savePlaylist = () => {
-    console.log("userID:", userID);
-    console.log("newPlaylist.name:", newPlaylist.name);
-    console.log("accessToken:", spotifyApi.current.getAccessToken());
-
-    let playlistId;
-
-    // Create a new playlist
-    axios
-      .post(
+  const savePlaylist = async () => {
+    try {
+      const response = await axios.post(
         `https://api.spotify.com/v1/users/${userID}/playlists`,
         {
           name: playlistName,
@@ -99,49 +103,44 @@ function Playlist({ accessToken }) {
             "Content-Type": "application/json",
           },
         }
-      )
-      .then((response) => {
-        playlistId = response.data.id;
-        setPlaylistId(playlistId);
+      );
 
-        // Map newPlaylist.tracks to an array of track URIs
-        const trackUris = newPlaylist.tracks.map((track) => track.uri);
-
-        return axios.post(
-          `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
-          {
-            uris: trackUris,
+      const newPlaylistId = response.data.id;
+      const trackUris = newPlaylist.tracks.map((track) => track.uri);
+      await axios.post(
+        `https://api.spotify.com/v1/playlists/${newPlaylistId}/tracks`,
+        { uris: trackUris },
+        {
+          headers: {
+            Authorization: `Bearer ${spotifyApi.current.getAccessToken()}`,
+            "Content-Type": "application/json",
           },
-          {
-            headers: {
-              Authorization: `Bearer ${spotifyApi.current.getAccessToken()}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-      })
-      .then(() => {
-        if (playlistId) {
-          return axios.get(
-            `https://api.spotify.com/v1/playlists/${playlistId}`,
-            {
-              headers: {
-                Authorization: `Bearer ${spotifyApi.current.getAccessToken()}`,
-              },
-            }
-          );
         }
-      })
-      .then((response) => {
-        if (response) {
-          setPlaylist(response.data);
-        }
-      })
-      .catch((err) => {
-        console.error("Error:", err);
-      });
-  };
+      );
 
+      const playlistResponse = await axios.get(
+        `https://api.spotify.com/v1/playlists/${newPlaylistId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${spotifyApi.current.getAccessToken()}`,
+          },
+        }
+      );
+
+      setPlaylistId(newPlaylistId);
+      setPlaylist(playlistResponse.data);
+      setPlaylistCreated(true);
+      window.open(playlistResponse.data.external_urls.spotify);
+    } catch (err) {
+      console.error("Error:", err);
+    }
+  };
+  console.log(
+    "Rendering... Current playlistId:",
+    playlistId,
+    "Playlist Created:",
+    playlistCreated
+  );
   return (
     <div className="playlists">
       {!newPlaylist ||
@@ -165,9 +164,9 @@ function Playlist({ accessToken }) {
       ) : (
         <>
           <h2 className="playlists__header">
-            Not a fan? Try Again{" "}
+            Not a fan? Try again{" "}
             <img
-              src={Create}
+              src={Refresh}
               className="playlists__icon"
               onClick={createPlaylist}
             ></img>
@@ -177,6 +176,7 @@ function Playlist({ accessToken }) {
               type="text"
               className="playlists__name"
               placeholder="Name your playlist"
+              value={playlistName}
               onChange={(e) => setPlaylistName(e.target.value)}
             />
             <button
@@ -185,17 +185,8 @@ function Playlist({ accessToken }) {
               onClick={savePlaylist}
             >
               Save to Spotify
-              <a
-                href={`https://open.spotify.com/playlist/${playlistId}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  src={Save}
-                  className="playlists__icon"
-                  alt="playlist save"
-                ></img>
-              </a>
+              {console.log("Rendering link with playlistId:", playlistId)}
+              <img src={Save} className="playlists__icon" alt="playlist save" />
             </button>
           </div>
         </>
@@ -215,24 +206,24 @@ function Playlist({ accessToken }) {
               </div>
               <div className="playlist__container">
                 <span className="playlist__artist">{track.artist} </span>
-                <div className="playlist__link">
-                  <button
-                    className="playlist__button"
-                    onClick={() => handlePlay(track.id)}
-                  >
-                    <img
-                      src={SpotifyPlayIcon}
-                      alt="Spotify Play Icon"
-                      className="playlist__icon"
-                    />
-                  </button>
-                </div>
+              </div>
+              <div className="playlist__link">
+                <button
+                  className="playlist__button"
+                  onClick={() => handlePlay(track.id)}
+                >
+                  <img
+                    src={SpotifyPlayIcon}
+                    alt="Spotify Play Icon"
+                    className="playlist__icon"
+                  />
+                </button>
               </div>
             </div>
           ))}
         </>
       )}
-      {!newPlaylist && <p>No tracks in playlist.</p>}
+      {!newPlaylist}
     </div>
   );
 }

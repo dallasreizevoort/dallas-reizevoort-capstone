@@ -7,6 +7,14 @@
   justify-content: center;
   height: 100vh;
   padding-left: 2rem;
+  background-color: #000000;
+  background-image: url('../../assets/images/waves.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 25% 25%;
+
+  
+  
 
   @include tablet {
     padding-left: 6rem;
@@ -16,13 +24,20 @@
     padding-left: 8rem;
   }
 
+  // &__wrapper {
+  //   background-image: url('../../assets/images/waves.gif');
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+  //   background-position: right;
+  // }
+
   &__header {
     font-size: 42px;
     font-weight: $font-weight-bold;
 
     @include tablet {
       font-size: 68px;
-      font-weight: $font-weight-bold;
+      font-weight: $font-weight-regular;
       width: 50%;
     }
 
@@ -35,7 +50,7 @@
       width: 50%;
       margin: 0;
       font-family: "Gotham", monospace;
-      font-weight: $font-weight-bold;
+      font-weight: $font-weight-regular;
     }
   }
 
@@ -44,12 +59,11 @@
     padding-top: 0.5rem;
 
     @include tablet {
-      font-size: 1rem;
+      font-size: 21px;
     }
     @include desktop {
-      padding-top: 0.5rem;
-      font-size: 1rem;
-      font-family: "Gotham", monospace;
+      padding-top: 1rem;
+      font-size: 21px;
     }
   }
 
@@ -60,5 +74,9 @@
   &__icon {
     height: 50px;
     width: 50px;
+    @include tablet {
+      height: 60px;
+      width: 60px;
+    }
   }
 }

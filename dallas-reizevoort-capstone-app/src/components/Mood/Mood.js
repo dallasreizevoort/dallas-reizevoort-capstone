@@ -92,7 +92,7 @@ function Mood({ accessToken }) {
           loader={<div>Loading Chart</div>}
           data={moodData}
           options={{
-            backgroundColor: "#191414",
+            backgroundColor: "#000000",
             fontName: "Gotham",
             fontSize: fontSize,
             hAxis: {

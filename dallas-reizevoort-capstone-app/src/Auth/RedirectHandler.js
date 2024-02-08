@@ -9,7 +9,7 @@ function RedirectHandler({ code }) {
   useEffect(() => {
     if (code && !location.pathname.startsWith("/dashboard")) {
       navigate(`/dashboard?code=${code}`, { replace: true });
-      navigate("/dashboard", { replace: true });
+      navigate("/dashboard/tracks", { replace: true });
     }
   }, [navigate, code, location]);
 

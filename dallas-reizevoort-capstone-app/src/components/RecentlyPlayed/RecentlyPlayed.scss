@@ -3,6 +3,13 @@
 @use '../../styles/partials/global.scss' as *;
 
 .recents {
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+  }
   &__wrapper {
     width: 100%;
     display: flex;

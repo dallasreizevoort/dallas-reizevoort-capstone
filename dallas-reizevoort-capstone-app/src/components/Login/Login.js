@@ -1,7 +1,7 @@
 import React from "react";
 import SpotifyIcon from "../../assets/images/Spotify_Icon_RGB_Green.png";
 import "./Login.scss";
-import { motion } from "framer-motion"
+import SoundWaves from '../../assets/images/waves.gif';
 
 const scopes = [
   "user-top-read",
@@ -33,6 +33,7 @@ const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&r
 function Login() {
   return (
     <div className="login">
+      {/* <div className="login__wrapper" style={{ backgroundImage: `url(${SoundWaves})` }}> */}
       <h1 className="login__header">SoundTrack Analyzer</h1>
       <h2 className="login__text">insights into your music taste</h2>
       <div className="login__icon-container">
@@ -41,6 +42,7 @@ function Login() {
         </a>
       </div>
     </div>
+    // </div>
   );
 }
 
