@@ -5,7 +5,6 @@ function RedirectHandler({ code }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // temporary fix
   useEffect(() => {
     if (code && !location.pathname.startsWith("/dashboard")) {
       navigate(`/dashboard?code=${code}`, { replace: true });

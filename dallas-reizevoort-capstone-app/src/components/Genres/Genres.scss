@@ -13,6 +13,13 @@
     align-items: center;
     padding-bottom: 1rem;
   }
+
+  &__subtitle {
+    padding: 2rem 0rem 1rem 0rem;
+    text-align: center;
+    width: 60%;
+    font-size: 18px;
+  }
 }
 
 .genre {

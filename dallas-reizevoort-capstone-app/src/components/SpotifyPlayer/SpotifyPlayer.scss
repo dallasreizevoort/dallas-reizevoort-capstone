@@ -1,6 +1,6 @@
-@use '../../styles/partials/variables.scss' as *;
-@use '../../styles/partials/mixins.scss' as *;
-@use '../../styles/partials/global.scss' as *;
+@use "../../styles/partials/variables.scss" as *;
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/global.scss" as *;
 
 .spotify-player {
   display: flex;
@@ -9,25 +9,24 @@
   padding: 2rem 0;
 
   &__close-button {
-    color: #FFFFFF;
+    color: $background-color-secondary;
     font-weight: bold;
     position: relative;
-    top: -105px;
-    right: -16px;
+    top: -102px;
+    right: -14px;
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
     z-index: 1;
   }
 }
 
-
 .spotify-player iframe {
- width: 300px;
- height: 150px;
- @include tablet {
-  width: 500px;
-  height: 175px;
- }
+  width: 300px;
+  height: 150px;
+  @include tablet {
+    width: 500px;
+    height: 175px;
+  }
 }

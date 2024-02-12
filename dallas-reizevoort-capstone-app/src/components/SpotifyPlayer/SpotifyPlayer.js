@@ -8,10 +8,12 @@ function SpotifyPlayer({ trackId, onClose }) {
 
   return (
     <div className="spotify-player">
-       <button className="spotify-player__close-button" onClick={onClose}>X</button>
+      <button className="spotify-player__close-button" onClick={onClose}>
+        X
+      </button>
       <iframe
         src={`https://open.spotify.com/embed/track/${trackId}?theme=white&view=list`}
-        frameborder="0"
+        frameBorder="0"
         allowtransparency="true"
         allow="encrypted-media"
       ></iframe>

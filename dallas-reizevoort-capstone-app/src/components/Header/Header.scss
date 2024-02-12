@@ -2,9 +2,15 @@
 @use "../../styles/partials/mixins.scss" as *;
 @use "../../styles/partials/global.scss" as *;
 
-.header {
+.header__wrap-all {
   display: flex;
   justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+
 
   @include tablet {
     display: flex;
@@ -15,7 +21,7 @@
 
   &__wrapper {
     display: flex;
-    align-items: center;
+    // align-items: center;
   }
 
   &__avatar {
@@ -31,6 +37,86 @@
       height: 60px;
     }
   }
+
+  .search {
+    display: block;
+    width: 200px;
+    margin-bottom: 100px;
+
+    &__input {
+      resize: none;
+      border: none;
+      background-color: #242424;
+      border-radius: 8px;
+      width: 300px;
+      padding: 15px;
+
+      &::placeholder {
+        color: lightgray;
+        font-size: 14px;
+      }
+      &:focus {
+        border: 1px solid #ffffff;
+        outline: #ffffff;
+      }
+    }
+  }
+
+  .search-dropdown {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #242424;
+    border-radius: 8px;
+    text-wrap: wrap;
+    padding: 0.5rem;
+    width: max-content;
+
+    &__player {
+      width: 100%;
+    }
+
+    &__wrapper {
+      display: flex;
+      align-items: center;
+      padding-right: 2rem;
+      white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 350px;
+    }
+
+    &__title {
+      white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+    }
+
+    &__artist {
+      white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+    }
+  
+  
+    &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+
+    &:hover {
+      background-color: $background-color-secondary;
+      cursor: pointer;
+  }
+}
+  
+  &__item img {
+    margin-right: 10px;
+  }
+}
 
   &__name {
     font-size: 14px;
@@ -73,11 +159,12 @@
   &__container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: left;
     @include desktop {
       display: flex;
       white-space: nowrap;
       margin-left: 0.75rem;
+
     }
 
     h1 {

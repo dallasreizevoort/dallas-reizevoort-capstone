@@ -9,7 +9,8 @@ function Settings({ accessToken }) {
 
   // need to add logout function
   const handleLogout = () => {
-    navigate("/login");
+    window.location.reload();
+    window.location.href = "/login";
   };
 
   const handleSpotifyRedirect = () => {

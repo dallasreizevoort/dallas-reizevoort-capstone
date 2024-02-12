@@ -8,13 +8,10 @@
   height: 100vh;
   padding-left: 2rem;
   background-color: #000000;
-  background-image: url('../../assets/images/waves.gif');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 25% 25%;
-
-  
-  
+  background-image: url("../../assets/images/waves.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 25% 25%;
 
   @include tablet {
     padding-left: 6rem;
@@ -23,13 +20,6 @@
   @include desktop {
     padding-left: 8rem;
   }
-
-  // &__wrapper {
-  //   background-image: url('../../assets/images/waves.gif');
-  //   background-size: cover;
-  //   background-repeat: no-repeat;
-  //   background-position: right;
-  // }
 
   &__header {
     font-size: 42px;

@@ -15,7 +15,7 @@ function RecentlyPlayed({ accessToken }) {
   );
 
   const handlePlay = (trackId) => {
-    console.log("Playing track with ID:", trackId); 
+    console.log("Playing track with ID:", trackId);
     setPlayingTrackId(trackId);
   };
 
@@ -30,7 +30,12 @@ function RecentlyPlayed({ accessToken }) {
 
   return (
     <div className="recents">
-      {playingTrackId && <SpotifyPlayer trackId={playingTrackId} onClose={() => setPlayingTrackId(null)}/>}
+      {playingTrackId && (
+        <SpotifyPlayer
+          trackId={playingTrackId}
+          onClose={() => setPlayingTrackId(null)}
+        />
+      )}
       {recentlyPlayed.map((track, index) => (
         <div key={index} className="recents__wrapper">
           <div className="recent__container">

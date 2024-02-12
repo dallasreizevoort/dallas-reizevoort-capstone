@@ -4,29 +4,33 @@ import { Chart } from "react-google-charts";
 import "./Mood.scss";
 
 function Mood({ accessToken }) {
-  const spotifyApi = useRef(new SpotifyWebApi({
-    clientId: process.env.REACT_APP_CLIENT_ID,
-  }));
+  const spotifyApi = useRef(
+    new SpotifyWebApi({
+      clientId: process.env.REACT_APP_CLIENT_ID,
+    })
+  );
 
   const [moodData, setMoodData] = useState([]);
-  const [chartSize, setChartSize] = useState({ width: '600px', height: '300px' });
+  const [chartSize, setChartSize] = useState({
+    width: "600px",
+    height: "300px",
+  });
   const [fontSize, setFontSize] = useState(13);
 
   useEffect(() => {
     if (window.innerWidth <= 768) {
-      setChartSize({ width: '100%', height: '200px' });
+      setChartSize({ width: "100%", height: "200px" });
       setFontSize(10);
     } else if (window.innerWidth > 768 && window.innerWidth <= 1200) {
-      setChartSize({ width: '600px', height: '300px' });
+      setChartSize({ width: "600px", height: "300px" });
       setFontSize(14);
     } else {
-      setChartSize({ width: '900px', height: '500px' });
+      setChartSize({ width: "900px", height: "500px" });
       setFontSize(18);
     }
   }, []);
 
   useEffect(() => {
-    
     if (!accessToken) return;
     spotifyApi.current.setAccessToken(accessToken);
     spotifyApi.current
@@ -59,8 +63,6 @@ function Mood({ accessToken }) {
         console.error("Something went wrong:", err);
       });
   }, [accessToken]);
-
-  
 
   return (
     <div className="mood">

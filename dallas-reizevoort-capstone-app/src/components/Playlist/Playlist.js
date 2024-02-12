@@ -65,13 +65,15 @@ function Playlist({ accessToken }) {
     try {
       const topTracksResponse = await spotifyApi.current.getMyTopTracks({
         limit: 20,
-        time_range: "medium_term"
+        time_range: "medium_term",
       });
       const trackIds = topTracksResponse.body.items.map((track) => track.id);
       const seedTracks = trackIds.slice(0, 5);
 
       const recommendationsResponse =
-        await spotifyApi.current.getRecommendations({ seed_tracks: seedTracks });
+        await spotifyApi.current.getRecommendations({
+          seed_tracks: seedTracks,
+        });
       const tracks = recommendationsResponse.body.tracks.map((track) => ({
         uri: track.uri,
         name: track.name,
@@ -191,7 +193,12 @@ function Playlist({ accessToken }) {
           </div>
         </>
       )}
-      {playingTrackId && <SpotifyPlayer trackId={playingTrackId} />}
+      {playingTrackId && (
+        <SpotifyPlayer
+          trackId={playingTrackId}
+          onClose={() => setPlayingTrackId(null)}
+        />
+      )}
       {newPlaylist && newPlaylist.tracks && newPlaylist.tracks.length > 0 && (
         <>
           {newPlaylist.tracks.map((track, index) => (

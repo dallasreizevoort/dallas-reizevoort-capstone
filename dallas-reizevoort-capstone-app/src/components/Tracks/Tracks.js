@@ -68,7 +68,12 @@ function Tracks({ accessToken, selectedTimeRange, setSelectedTimeRange }) {
 
   return (
     <div className="tracks">
-      {playingTrackId && <SpotifyPlayer trackId={playingTrackId} onClose={() => setPlayingTrackId(null)}/>} 
+      {playingTrackId && (
+        <SpotifyPlayer
+          trackId={playingTrackId}
+          onClose={() => setPlayingTrackId(null)}
+        />
+      )}
       {selectedTimeRange === "short_term" &&
         topTracksShort.map((track, index) => (
           <div key={index} className="tracks__wrapper">
