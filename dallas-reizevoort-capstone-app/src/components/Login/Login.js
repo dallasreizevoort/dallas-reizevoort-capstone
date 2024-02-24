@@ -32,7 +32,7 @@ const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&r
 function Login() {
   return (
     <div className="login">
-      <h1 className="login__header">SoundTrack Analyzer</h1>
+      <h1 className="login__header">Trackify</h1>
       <h2 className="login__text">insights into your music taste</h2>
       <div className="login__icon-container">
         <a className="login__link" href={AUTH_URL}>
