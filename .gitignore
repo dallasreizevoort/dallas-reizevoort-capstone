@@ -1,8 +1,6 @@
 # dependencies
-/node_modules
-dallas-reizevoort-capstone-app/node_modules
-dallas-reizevoort-capstone-api/node_modules
-.eslintcache
+node_modules/
+
 
 # testing
 /coverage
@@ -18,3 +16,4 @@ dallas-reizevoort-capstone-api/node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+node_modules/
